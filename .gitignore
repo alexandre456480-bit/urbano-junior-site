@@ -1,0 +1,7 @@
+research/node_modules/
+research/package-lock.json
+research/reference.html
+research/*.png
+research/qa-*.json
+.sites-runtime/
+*.tar.gz
