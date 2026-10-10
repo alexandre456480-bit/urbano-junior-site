@@ -52,3 +52,9 @@ Unsplash: https://images.unsplash.com/photo-1539109136881-3be0616acf4b (estilo p
 ## Verificação realizada
 
 Página verificada no Chrome em 320, 375, 390, 600, 768, 820, 1024 e 1440 px, sem transbordamento horizontal. Imagens carregadas, links internos válidos e JSON-LD válido. Menu móvel testado com abertura e Escape, seleção automática do interesse a partir dos serviços, expansão de FAQ e geração do link de WhatsApp com nome e mensagem. Nenhuma mensagem foi enviada: a navegação externa do teste foi interceptada. Sem erros de JavaScript ou respostas HTTP de erro durante a verificação local. Capturas desktop e móvel disponíveis na pasta local `research/`.
+
+## Movimento e botão de contato
+
+`motion.js` coordena a entrada da hero e revelações únicas de títulos, fotografias, assinatura, etapas do processo e demais blocos. Usa IntersectionObserver e Web Animations nativos, sem dependências ou escuta contínua da rolagem. As animações combinam recortes, pequenas translações, opacidade e expansão das linhas das etapas, com curvas suaves de desaceleração. Os efeitos de hover são aplicados a dispositivos com ponteiro preciso. O conteúdo continua visível sem JavaScript; o foco cancela efeitos em controles e a preferência por movimento reduzido desativa as entradas.
+
+Botão flutuante circular, com vetor de WhatsApp do Simple Icons v11.15.0, em proporções originais e com preenchimento em vez de contorno improvisado. Origem do vetor registrada em `dist/assets/whatsapp-source.txt`. A geometria circular e a centralização foram verificadas nas mesmas oito larguras, assim como entrada da hero, revelações durante a rolagem, execução única, conclusão dos efeitos, leitura sem JavaScript e mudança da preferência de movimento.
