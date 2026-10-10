@@ -54,7 +54,7 @@
     <div class="header-inner container">
       <a class="brand" href="#inicio" aria-label="Urbano Junior — início">
         <img src="assets/logo-display.webp" alt="Logo de Urbano Junior Estilista" width="84" height="84">
-        <span class="brand-type">URBANO JUNIOR<small>ESTILISTA · GOIÂNIA</small></span>
+        <span class="brand-type">URBANO JUNIOR<small>ESTILISTA EM GOIÂNIA</small></span>
       </a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span></button>
       <nav id="main-navigation" aria-label="Navegação principal">
@@ -68,19 +68,29 @@
   <main id="conteudo">
     <section id="inicio" class="hero container" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="fine-line"></span> CRIAÇÃO AUTORAL · GOIÂNIA</p>
-        <h1 id="hero-title">Sua essência,<br>em cada<br><em>criação.</em></h1>
-        <p class="hero-description">Estilista e criação sob medida em Goiânia.<br>Entre a ideia e o vestir, um olhar para o que<br class="desktop-break"> faz você ser única.</p>
+        <h1 id="hero-title">Sua identidade,<br>desenhada<br><em>sob medida.</em></h1>
+        <p class="hero-description">Estilista e criação sob medida em Goiânia.<br>Alta-costura, vestidos e peças exclusivas desenvolvidas para valorizar sua identidade.</p>
         <a class="button button-dark" href="#contato">CONVERSE SOBRE SUA IDEIA <svg class="icon"><use href="#arrow"/></svg></a>
         <a class="text-link hero-link" href="#universos">Explore os serviços <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-visual">
-        <img class="hero-photo" src="assets/editorial-evening.jpg" alt="Fotografia ilustrativa de uma modelo com vestido de festa, em composição editorial" width="900" height="1282" fetchpriority="high">
-        <div class="image-caption"><span>FORMA. TEXTURA. IDENTIDADE.</span><span>01 / UJ</span></div>
-        <span class="vertical-caption">O VESTIR COMO EXPRESSÃO</span>
+        <div class="hero-carousel" role="region" aria-roledescription="carrossel" aria-label="Referências ilustrativas de moda" data-hero-carousel>
+          <div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 de 3" aria-hidden="false">
+            <img class="hero-photo" src="assets/editorial-evening.jpg" alt="Referência ilustrativa de vestido de festa em composição editorial" width="900" height="1282" fetchpriority="high">
+            <img class="hero-photo hero-photo-style" src="assets/editorial-hero.jpg" alt="Referência ilustrativa de estilo pessoal com uma composição de moda" width="1600" height="2400" fetchpriority="high">
+          </div>
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 de 3" aria-hidden="true">
+            <img class="hero-photo" src="assets/editorial-fashion.jpg" alt="Referência ilustrativa de peças de vestuário em uma arara" width="900" height="1350" loading="lazy">
+            <img class="hero-photo" src="assets/editorial-evening.jpg" alt="Referência ilustrativa de vestido para ocasiões especiais" width="900" height="1282" loading="lazy">
+          </div>
+          <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 de 3" aria-hidden="true">
+            <img class="hero-photo hero-photo-style" src="assets/editorial-hero.jpg" alt="Referência ilustrativa de silhueta e estilo pessoal" width="1600" height="2400" loading="lazy">
+            <img class="hero-photo" src="assets/editorial-fashion.jpg" alt="Referência ilustrativa de uma seleção de roupas e texturas" width="900" height="1350" loading="lazy">
+          </div>
+          <button class="carousel-toggle" type="button" aria-label="Pausar carrossel" aria-pressed="false" hidden><span class="carousel-pause-icon" aria-hidden="true"></span></button>
+        </div>
       </div>
     </section>
-    <div class="hero-baseline container"><span>UMA IDEIA. MUITAS POSSIBILIDADES.</span><span>FEITO PARA EXPRESSAR VOCÊ <span aria-hidden="true">↘</span></span></div>
 
     <section id="universos" class="services section-space" aria-labelledby="services-title">
       <div class="container">

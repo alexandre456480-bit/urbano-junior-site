@@ -34,6 +34,56 @@
   window.addEventListener('scroll', updateHeader, {passive: true});
   updateHeader();
 
+  const carousel = document.querySelector('[data-hero-carousel]');
+  if (carousel) {
+    const slides = [...carousel.querySelectorAll('.hero-slide')];
+    const toggle = carousel.querySelector('.carousel-toggle');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let current = 0;
+    let paused = reducedMotion.matches;
+    let timer = null;
+
+    const updateToggle = () => {
+      toggle.setAttribute('aria-pressed', String(paused));
+      toggle.setAttribute('aria-label', paused ? 'Retomar carrossel' : 'Pausar carrossel');
+      toggle.classList.toggle('is-paused', paused);
+    };
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = null;
+    };
+    const start = () => {
+      stop();
+      if (paused || document.hidden || slides.length < 2) return;
+      timer = window.setInterval(() => {
+        slides[current].classList.remove('is-active');
+        slides[current].setAttribute('aria-hidden', 'true');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('is-active');
+        slides[current].setAttribute('aria-hidden', 'false');
+      }, 5000);
+    };
+
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      updateToggle();
+      start();
+    });
+    document.addEventListener('visibilitychange', start);
+    reducedMotion.addEventListener('change', event => {
+      paused = event.matches;
+      updateToggle();
+      start();
+    });
+    // Warm the remaining photographs without changing their layout or duplicating requests.
+    slides.slice(1).forEach(slide => slide.querySelectorAll('img').forEach(image => {
+      image.loading = 'eager';
+    }));
+    updateToggle();
+    start();
+  }
+
   document.querySelectorAll('[data-interest]').forEach(link => {
     link.addEventListener('click', () => {
       interest.value = link.dataset.interest;
