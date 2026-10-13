@@ -1,0 +1,30 @@
+[
+  {
+    "file": "editorial-bridal.jpg",
+    "source": "https://www.pexels.com/photo/beautiful-bride-in-elegant-white-wedding-dress-34034504/",
+    "download": "https://images.pexels.com/photos/34034504/pexels-photo-34034504.jpeg?auto=compress&cs=tinysrgb&w=1000&q=85",
+    "license": "Pexels License",
+    "illustrative": true
+  },
+  {
+    "file": "editorial-sketch.jpg",
+    "source": "https://www.pexels.com/photo/fabric-sampler-and-a-dress-design-sketch-on-the-wall-of-a-tailor-shop-6358793/",
+    "download": "https://images.pexels.com/photos/6358793/pexels-photo-6358793.jpeg?auto=compress&cs=tinysrgb&w=1000&q=85",
+    "license": "Pexels License",
+    "illustrative": true
+  },
+  {
+    "file": "editorial-pattern.jpg",
+    "source": "https://www.pexels.com/photo/crop-seamstress-with-sewing-ruler-and-pattern-drawing-on-paper-7147569/",
+    "download": "https://images.pexels.com/photos/7147569/pexels-photo-7147569.jpeg?auto=compress&cs=tinysrgb&w=1000&q=85",
+    "license": "Pexels License",
+    "illustrative": true
+  },
+  {
+    "file": "editorial-craft.jpg",
+    "source": "https://www.pexels.com/photo/a-person-using-a-sewing-machine-12362544/",
+    "download": "https://images.pexels.com/photos/12362544/pexels-photo-12362544.jpeg?auto=compress&cs=tinysrgb&w=1000&q=85",
+    "license": "Pexels License",
+    "illustrative": true
+  }
+]

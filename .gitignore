@@ -5,3 +5,5 @@ research/*.png
 research/qa-*.json
 .sites-runtime/
 *.tar.gz
+research/home-before.html
+research/styles-before.css

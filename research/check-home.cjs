@@ -1,0 +1,122 @@
+const {chromium} = require('playwright');
+const fs = require('node:fs');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const {execFileSync} = require('node:child_process');
+const root = path.join(__dirname, '..');
+const widths = [320,375,390,600,768,820,1024,1440,1920];
+const url = 'http://127.0.0.1:4173/';
+
+(async () => {
+  const browser = await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+  const context = await browser.newContext({viewport:{width:1440,height:1050},reducedMotion:'reduce'});
+  const page = await context.newPage();
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('response', response => {if(response.url().startsWith(url) && response.status() >= 400) errors.push(`${response.status()} ${response.url()}`)});
+  const baselinePath = path.join(__dirname,'home-before.html');
+  const baselineHTML = fs.existsSync(baselinePath) ? fs.readFileSync(baselinePath,'utf8') : execFileSync('git',['show','94442b6ec0da4f23bf6c217bead4487559bb9069:dist/index.html'],{cwd:root,encoding:'utf8'});
+  await page.route('**/baseline', route => route.fulfill({contentType:'text/html',body:baselineHTML}));
+  const geometry = () => page.evaluate(() => [...document.querySelectorAll('.site-header, .header-inner, .brand, #main-navigation, .hero, .hero-copy, #hero-title, .hero-description, .hero-copy .button, .hero-link, .hero-visual, .hero-slide.is-active .hero-photo-frame')].map(element => {
+    const {x,y,width,height} = element.getBoundingClientRect();
+    const css = getComputedStyle(element);
+    return {element:element.className || element.id,x,y,width,height,fontSize:css.fontSize,lineHeight:css.lineHeight,color:css.color};
+  }));
+  const baseline = {};
+  await page.goto(url+'baseline', {waitUntil:'domcontentloaded'});
+  await page.evaluate(()=>document.fonts.ready);
+  for (const width of widths) {await page.setViewportSize({width,height:950}); baseline[width] = await geometry()}
+  await page.goto(url, {waitUntil:'domcontentloaded'});
+  await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].filter(image=>image.getAttribute('src')).map(async image=>{image.loading='eager';await image.decode()}))});
+  const results = {heroPreserved:[],layouts:[],errors};
+  for(const width of widths) {
+    await page.setViewportSize({width,height:950});
+    assert.deepEqual(await geometry(), baseline[width],`Header/hero changed at ${width}px`);
+    results.heroPreserved.push(width);
+    const layout = await page.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,overflow:document.documentElement.scrollWidth>innerWidth}));
+    results.layouts.push(layout);
+    assert.equal(layout.overflow,false,`Overflow at ${width}px`);
+  }
+  assert.equal(await page.locator('h1').count(),1);
+  assert.deepEqual(await page.locator('main>section').evaluateAll(elements=>elements.map(element=>element.id)), ['inicio','universos','portfolio','estilista','processo','contato']);
+  assert.equal(await page.locator('.service-item').count(),4);
+  assert.equal(await page.locator('.process-grid li').count(),4);
+  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)),[]);
+  results.images = await page.evaluate(()=>[...document.images].filter(image=>image.getAttribute('src')).every(image=>image.complete&&image.naturalWidth>0));
+  assert.equal(results.images,true);
+  results.fonts = await page.evaluate(()=>['.service-label>p','.about-copy>p:not(.eyebrow):not(.lead)','.process-grid p','.contact-detail','.footer-navigation a'].map(selector=>({selector,size:getComputedStyle(document.querySelector(selector)).fontSize})));
+
+  await page.setViewportSize({width:1440,height:1050});
+  const expected = {'todos':6,'sob-medida':1,'festa':1,'noivas':1,'autorais':2,'modelagem':1};
+  for (const [filter,count] of Object.entries(expected)) {
+    await page.locator(`[data-filter="${filter}"]`).click();
+    assert.equal(await page.locator('.portfolio-item:visible').count(),count);
+    assert.equal(await page.locator(`[data-filter="${filter}"]`).getAttribute('aria-pressed'),'true');
+  }
+  await page.locator('.service-label [data-service-filter="noivas"]').click();
+  assert.equal(await page.locator('.portfolio-item:visible').count(),1);
+  assert.equal(await page.locator('[data-filter="noivas"]').getAttribute('aria-pressed'),'true');
+  await page.locator('[data-project="sim"]').click();
+  await page.waitForFunction(()=>document.querySelector('#project-dialog').open);
+  assert.equal(await page.locator('#project-dialog-title').textContent(),'O instante do sim');
+  assert.ok(decodeURIComponent(await page.locator('#project-dialog-contact').getAttribute('href')).includes('Noivas'));
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#project-dialog').evaluate(element=>element.open),false);
+  assert.equal(await page.locator('[data-project="sim"]').evaluate(element=>element===document.activeElement),true);
+  await page.locator('[data-filter="todos"]').click();
+
+  const carousel = page.locator('.atelier-carousel');
+  await carousel.scrollIntoViewIfNeeded();
+  const photo = page.locator('.arc-photo').first();
+  const before = await photo.evaluate(element=>element.style.transform);
+  const rect = await carousel.boundingBox();
+  await page.mouse.move(rect.x+rect.width*.55,rect.y+rect.height*.5);
+  await page.mouse.down();await page.mouse.move(rect.x+rect.width*.3,rect.y+rect.height*.5,{steps:8});await page.mouse.up();
+  assert.notEqual(await photo.evaluate(element=>element.style.transform),before);
+  await carousel.focus();const keyBefore = await photo.evaluate(element=>element.style.transform);await page.keyboard.press('ArrowRight');
+  assert.notEqual(await photo.evaluate(element=>element.style.transform),keyBefore);
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  await page.locator('body').click({position:{x:5,y:5}});await page.mouse.move(5,5);
+  await carousel.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(200);
+  const moving = await photo.evaluate(element=>element.style.transform);await page.waitForTimeout(220);
+  assert.notEqual(await photo.evaluate(element=>element.style.transform),moving,'Arc should move slowly');
+  await page.locator('.arc-toggle').click();
+  const paused = await photo.evaluate(element=>element.style.transform);await page.waitForTimeout(220);
+  assert.equal(await photo.evaluate(element=>element.style.transform),paused,'Pause must stop arc');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.setViewportSize({width:390,height:844});
+  assert.equal(await carousel.evaluate(element=>element.classList.contains('is-arc')),false);
+  const track = page.locator('.arc-track');
+  assert.ok(await track.evaluate(element=>element.scrollWidth>element.clientWidth));
+  await carousel.focus();await page.keyboard.press('ArrowRight');assert.ok(await track.evaluate(element=>element.scrollLeft>0));
+
+  await page.goto(url,{waitUntil:'domcontentloaded'});
+  await page.locator('.menu-toggle').click();assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'true');
+  await page.keyboard.press('Escape');assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
+  results.whatsappLinks = await page.locator('a[href*="wa.me"]').evaluateAll(links=>links.every(link=>link.href.startsWith('https://wa.me/5562981647663')));
+  assert.equal(results.whatsappLinks,true);
+  assert.ok((await page.locator('iframe').getAttribute('src')).includes('cid=6007956909621646272'));
+  const homeContent = JSON.parse(fs.readFileSync(path.join(root,'dist/content/home.json'),'utf8'));
+  assert.ok((await page.locator('.studio-caption address').innerText()).includes(homeContent.contact.streetAddress));
+  const address = await page.evaluate(()=>JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent)['@graph'].find(item=>item['@type']==='LocalBusiness').address);
+  assert.equal(address.streetAddress,homeContent.contact.streetAddress+' — Jardim América');
+  assert.equal(address.postalCode,homeContent.contact.postalCode);
+  await page.locator('.footer-bottom a').click();assert.equal(await page.locator('h1').textContent(),'Política de Privacidade.');
+  await page.goto(url,{waitUntil:'domcontentloaded'});
+  await page.evaluate(async()=>{await Promise.all([...document.images].filter(image=>image.getAttribute('src')).map(async image=>{image.loading='eager';await image.decode()}))});
+  await page.screenshot({path:path.join(__dirname,'home-mobile.png'),fullPage:true});
+  await page.setViewportSize({width:1440,height:1050});
+  await page.screenshot({path:path.join(__dirname,'home-desktop.png'),fullPage:true});
+  for(const id of ['universos','portfolio','estilista','processo','contato']) await page.locator('#'+id).screenshot({path:path.join(__dirname,'home-'+id+'.png')});
+  const nojs = await browser.newPage({javaScriptEnabled:false,viewport:{width:390,height:844}});
+  await nojs.goto(url,{waitUntil:'domcontentloaded'});
+  assert.equal(await nojs.locator('.portfolio-item').count(),6);
+  assert.equal(await nojs.locator('main>section').count(),6);
+  assert.equal(await nojs.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  results.noJSContent = true;
+  assert.deepEqual(errors,[]);
+  fs.writeFileSync(path.join(__dirname,'qa-home.json'),JSON.stringify(results,null,2));
+  console.log(JSON.stringify(results,null,2));
+  await browser.close();
+})().catch(error=>{console.error(error);process.exit(1)});

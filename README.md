@@ -1,62 +1,62 @@
 # Urbano Junior — página inicial
 
-Página estática em HTML, CSS e JavaScript, sem framework e sem etapa de build. Os arquivos prontos para hospedagem estão em `dist/`.
+Site estático em HTML, CSS e JavaScript. A pasta `dist/` contém todos os arquivos prontos para hospedagem. Não há framework nem instalação de dependências para servir o site.
 
-## Direção e referência
+## Identidade preservada
 
-A página da Magnólia Noivas foi examinada em navegador a 1440 px. Elementos aproveitados como linguagem: títulos serifados de grande escala, amplo espaço vazio, fotografia vertical, arredondamentos em arco, botões discretos e alternância de fundos claros. A composição e os textos foram desenvolvidos para Urbano Junior, abrangendo criação sob medida, festas e modelagem para marcas.
+A refatoração mantém o HTML, os estilos, as imagens, os textos, os botões e a navegação da hero original. Cormorant Garamond e Manrope continuam sendo servidas localmente, com as licenças OFL em `dist/assets/`. A paleta permanece marfim, greige, pedra, nogueira e mocha. `styles.css` conserva a composição original; `home.css` controla as seções refatoradas abaixo da hero.
 
-Logo original preservada, com assinatura em imagem e aplicação circular. O wordmark tipográfico ao lado no cabeçalho auxilia a leitura em tamanhos pequenos. A imagem original tem 1280 × 1280; a aplicação usa mistura de luminosidade com o fundo para suavizar o círculo branco sem modificar o arquivo. A cópia de exibição WebP tem 480 × 480 e aproximadamente 28 KB, mantendo o PNG original no projeto e nos metadados sociais.
+Os textos auxiliares das novas seções usam 15–16 px, links de apoio 14 px e rótulos 11–12 px. A hero e o cabeçalho conservam seus tamanhos anteriores.
 
-Paleta: marfim `#F5F2EC`, greige `#D9D2C6`, pedra `#B7A996`, nogueira `#8C7864`, mocha `#4F4034`. Tons complementares: tinta `#29251F` para leitura, papel `#FCFAF6` para alternância de seções, texto secundário `#6B6258` e acento `#705A48`. Os tons claros são usados em superfícies, não em texto pequeno sobre marfim.
+## Estrutura final
 
-Tipografia: Cormorant Garamond para títulos e Manrope para textos, ambas servidas localmente em WOFF2, com caracteres latinos e portugueses. Fontes obtidas pelo Google Fonts, com licenças OFL incluídas em `dist/assets/`. Conservar suas licenças na redistribuição. https://github.com/google/fonts/tree/main/ofl/cormorantgaramond e https://github.com/google/fonts/tree/main/ofl/manrope
+1. Hero original.
+2. Principais serviços: criação sob medida, festa e ocasiões especiais, noivas e modelagem para marcas, em grid 2×2 no desktop e empilhados no mobile.
+3. Portfólio: seis referências ilustrativas em masonry, seis filtros, visualização em modal e CTA contextual para WhatsApp.
+4. Diferencial: processo artesanal acompanhado diretamente por Urbano Junior, com fotografias em arco e perspectiva.
+5. Como funciona: quatro etapas em cards translúcidos e CTA central.
+6. Localização e contato: mapa do estabelecimento, WhatsApp, Instagram e Facebook.
+7. Rodapé: links internos, studio, redes e política de privacidade.
 
-## Estrutura e conteúdo
+As antigas seções de marcas e perguntas frequentes e o formulário foram retirados da home, conforme o novo briefing. O contato abre diretamente o WhatsApp; nenhuma mensagem é enviada automaticamente.
 
-1. Abertura: identidade autoral, estilista em Goiânia e primeiro contato.
-2. Serviços: criação sob medida; festa e ocasiões especiais; modelagem para marcas.
-3. Estilista: assinatura e posicionamento, sem inventar biografia ou credenciais.
-4. Processo: roteiro editorial proposto de conversa, conceito, modelagem e entrega.
-5. Marcas: frente B2B com contato direcionado.
-6. Dúvidas: contratação, escopo, prazo, orçamento e localização.
-7. Contato: formulário que prepara uma mensagem no WhatsApp para o visitante revisar e enviar.
-8. Rodapé: endereço, mapa, Instagram e telefone confirmados pelo usuário.
+## Fotografias e edição de conteúdo
 
-## Validação editorial antes do lançamento comercial
+As fotografias e os nomes do portfólio são ilustrativos, com aviso visível na seção. O Instagram oficial permite consultar os trabalhos reais. Nenhum retrato de banco de imagens é apresentado como sendo Urbano Junior.
 
-Confirmar com Urbano Junior o escopo preciso de cada serviço, especialmente desenvolvimento de coleções, processo de provas, e o uso comercial da expressão alta-costura. A versão usa criação sob medida como termo principal enquanto esse posicionamento é validado. Acrescentar trajetória, formação e provas de trabalho somente com informações reais.
+Edite `dist/content/home.json` para substituir `src`, `alt`, título, categoria, descrição, proporção e posição das imagens de serviços, portfólio e carrossel. Os dados de contato e o endereço do mapa estão no mesmo arquivo.
 
-As fotos são ilustrativas e esse aviso está visível na página. Não constituem portfólio do estilista. Trocar por fotos próprias autorizadas antes da divulgação comercial. O link de portfólio aponta para o Instagram oficial. Nenhuma avaliação, prêmio, ano de carreira ou número de clientes foi inventado.
+Depois de editar esse JSON, rode:
 
-## Contatos confirmados
+```powershell
+python research/refactor-home.py
+```
 
-- WhatsApp: +55 62 98164-7663 (nono dígito confirmado pelo usuário).
+Esse script atualiza o HTML sem tocar na hero ou no cabeçalho. O conteúdo já está no HTML servido, garantindo leitura e links de contato sem JavaScript. O JSON também alimenta os detalhes do modal; se sua requisição falhar, o modal usa o conteúdo do HTML.
+
+As fontes das novas fotos gratuitas do Pexels estão documentadas em `dist/assets/home-photo-sources.json`. As três fotos originais são do Unsplash. Todas estão em arquivos locais; nenhuma fotografia foi incorporada ao CSS.
+
+## Contatos
+
+- WhatsApp: +55 62 98164-7663.
 - Instagram: https://www.instagram.com/urbanojr/
-- Rua C-159, 113 — Jardim América, Goiânia — GO, 74255-140.
+- Google Maps: estabelecimento identificado pelo CID `6007956909621646272`, extraído do link fornecido pelo usuário.
+- Endereço: Rua C-146, 220, Jardim América, Goiânia — GO, 74255-170, conforme o mapa enviado nesta refatoração. Esse dado substitui o endereço anterior no HTML e nos metadados.
+- Facebook: nome fornecido, “Urbano Jr alta costura”. Enquanto a URL direta não for confirmada, o link abre a busca de páginas por esse nome. Substitua `contact.facebook` pela URL oficial e `facebookIsSearch` por `false` no JSON.
 
-## SEO e acessibilidade
+## Interações e acessibilidade
 
-Idioma pt-BR, título e descrição, uma única H1, títulos hierárquicos, links internos, textos em HTML, metadados sociais, canonical, sitemap e robots. JSON-LD para LocalBusiness, Person e WebSite com dados fornecidos. Substituir a origem nos metadados e XML ao migrar para o domínio definitivo. A hospedagem inicial do Sites é privada: os arquivos de SEO não tornam uma página privada indexável.
+O carrossel em arco percorre uma volta em aproximadamente 150 segundos. Aceita arraste e setas do teclado; pausa ao receber foco, ao passar o mouse, ao sair da tela e quando a aba fica oculta. Possui controle explícito de pausa. No tablet e no celular, usa rolagem horizontal nativa com snap. Movimento reduzido desativa a rotação automática e as entradas editoriais.
 
-Imagens com dimensões e carregamento tardio abaixo da dobra, fonte local, navegação móvel com Escape, foco visível, link de salto, FAQs nativas, respeito a movimento reduzido. O formulário usa validação nativa e nenhuma informação é armazenada ou enviada automaticamente. Sem Analytics, pixels ou cookies de rastreamento nesta versão.
+Os filtros têm estado anunciado e contagem acessível. O modal possui fechamento por botão, Escape e clique externo, retém o foco e devolve-o ao projeto. Sem JavaScript, cada projeto permite abrir a fotografia diretamente. O menu móvel mantém abertura, fechamento e Escape. O botão flutuante original continua disponível.
 
-## Prévia local
+Uma H1, cinco seções com H2, H3 em serviços, projetos e etapas, idioma pt-BR, alt editável, dimensões de imagens, lazy loading, fontes locais, metadados e JSON-LD. A política de privacidade é uma página interna simples e está incluída no sitemap. A audiência da hospedagem existente deve ser preservada.
 
-Abra `dist/index.html` diretamente ou sirva a pasta `dist` com `python -m http.server 4173 --bind 127.0.0.1 --directory dist`. A aplicação funciona sem dependências. Os scripts em `research/` são ferramentas de análise e QA; não fazem parte do site servido.
+## Prévia e verificação
 
-## Fotografias ilustrativas
+```powershell
+python -m http.server 4173 --bind 127.0.0.1 --directory dist
+node research/check-home.cjs
+```
 
-Unsplash: https://images.unsplash.com/photo-1539109136881-3be0616acf4b (estilo pessoal), https://images.unsplash.com/photo-1566174053879-31528523f8ae (vestido de festa), https://images.unsplash.com/photo-1551232864-3f0890e580d9 (arara de roupas). Não foram copiadas imagens da Magnólia.
-
-## Verificação realizada
-
-Página verificada no Chrome em 320, 375, 390, 600, 768, 820, 1024 e 1440 px, sem transbordamento horizontal. Imagens carregadas, links internos válidos e JSON-LD válido. Menu móvel testado com abertura e Escape, seleção automática do interesse a partir dos serviços, expansão de FAQ e geração do link de WhatsApp com nome e mensagem. Nenhuma mensagem foi enviada: a navegação externa do teste foi interceptada. Sem erros de JavaScript ou respostas HTTP de erro durante a verificação local. Capturas desktop e móvel disponíveis na pasta local `research/`.
-
-## Movimento e botão de contato
-
-`motion.js` coordena a entrada editorial da hero: linhas em sequência, expressão final com máscara horizontal e fotografias com máscaras verticais opostas. Títulos, cartões, assinatura original, etapas e marcas recebem revelações únicas e linhas desenhadas. Usa IntersectionObserver e Web Animations nativos, sem bibliotecas adicionais. O parallax discreto fica restrito ao desktop com ponteiro preciso; eventos passivos agendam uma atualização por quadro, apenas para imagens visíveis.
-
-O FAQ anima abertura e fechamento em 430 ms, incluindo cliques rápidos e teclado. Campos entram progressivamente e recebem sublinhado de foco. No celular, os deslocamentos são menores e a câmera é desativada. Movimento reduzido cancela as entradas e torna o acordeão imediato. O conteúdo e os FAQs continuam acessíveis sem JavaScript. Geometria e textos foram comparados em oito larguras de 320 a 1440 px, sem alterações de layout ou transbordamento. O carrossel mantém pares e intervalo de 5 segundos.
-
-Botão flutuante circular, com vetor de WhatsApp do Simple Icons v11.15.0, em proporções originais e com preenchimento em vez de contorno improvisado. Origem do vetor registrada em `dist/assets/whatsapp-source.txt`. A geometria circular e a centralização foram verificadas nas mesmas oito larguras, assim como entrada da hero, revelações durante a rolagem, execução única, conclusão dos efeitos, leitura sem JavaScript e mudança da preferência de movimento.
+O QA utiliza o Playwright já instalado em `research/` e o Chrome local. Compara a geometria e a tipografia do cabeçalho e da hero com a versão anterior em 320, 375, 390, 600, 768, 820, 1024, 1440 e 1920 px. Confere transbordamento, imagens, ordem das seções, filtros, serviços, modal e foco, arraste, teclado, movimento e pausa do carrossel, menu móvel, contatos, página de privacidade e leitura sem JavaScript. Nenhuma mensagem é enviada nos testes. Capturas e resultados de QA são arquivos locais ignorados pelo Git.
