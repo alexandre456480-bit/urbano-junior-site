@@ -2,8 +2,8 @@
   "contact": {
     "whatsapp": "https://wa.me/5562981647663",
     "instagram": "https://www.instagram.com/urbanojr/",
-    "facebook": "https://www.facebook.com/search/pages/?q=Urbano%20Jr%20alta%20costura",
-    "facebookIsSearch": true,
+    "facebook": "https://www.facebook.com/urbanojrac",
+    "facebookIsSearch": false,
     "streetAddress": "Rua C-146, 220",
     "postalCode": "74255-170",
     "maps": "https://www.google.com/maps?cid=6007956909621646272",
@@ -13,19 +13,19 @@
     {
       "title": "Criação sob medida",
       "category": "sob-medida",
-      "src": "assets/editorial-hero.jpg",
-      "alt": "Fotografia ilustrativa de composição de moda e estilo pessoal",
-      "width": 1600,
-      "height": 2400,
+      "src": "assets/roupas-sob-medida-urbano-junior.webp",
+      "alt": "Roupas sob medida desenvolvidas por Urbano Junior em Goiânia",
+      "width": 675,
+      "height": 832,
       "description": "Desenvolvimento de peças sob medida, com definição de modelo, tecidos, medidas e ajustes."
     },
     {
       "title": "Festa e ocasiões especiais",
       "category": "festa",
-      "src": "assets/editorial-evening.jpg",
-      "alt": "Fotografia ilustrativa de vestido de festa com silhueta elegante",
-      "width": 900,
-      "height": 1282,
+      "src": "assets/roupas-modeladas-para-festas-e-ocasioes-especiais-urbano-junior.webp",
+      "alt": "Roupas modeladas para festas e ocasiões especiais por Urbano Junior",
+      "width": 1165,
+      "height": 1350,
       "description": "Vestidos e peças sob medida para festas, eventos e outras ocasiões especiais."
     },
     {
@@ -40,10 +40,10 @@
     {
       "title": "Modelagem para marcas",
       "category": "modelagem",
-      "src": "assets/editorial-pattern.jpg",
-      "alt": "Fotografia ilustrativa de mãos traçando um molde com régua de modelagem",
-      "width": 1000,
-      "height": 1500,
+      "src": "assets/modelagem-para-marcas-urbano-junior.webp",
+      "alt": "Modelagem para marcas, moulage e desenvolvimento técnico por Urbano Junior",
+      "width": 1024,
+      "height": 1536,
       "description": "Modelagem, moulage e desenvolvimento técnico de peças para marcas, estilistas e projetos de moda."
     }
   ],
@@ -131,6 +131,20 @@
       "ratio": "square",
       "position": "50% 58%",
       "description": "Referência ilustrativa de costura e acabamento de tecido em máquina de ateliê."
+    },
+    {
+      "id": "vestido-festa",
+      "title": "Vestido de festa personalizado",
+      "category": "festa",
+      "categoryLabel": "Festa",
+      "type": "Bordados & personalização",
+      "src": "assets/vestido-de-festa-personalizado-urbano-junior.webp",
+      "alt": "Vestido de festa personalizado com bordados dourados por Urbano Junior",
+      "width": 810,
+      "height": 1080,
+      "ratio": "portrait",
+      "position": "50% 35%",
+      "description": "Vestido de festa exclusivo com bordados refinados, desenvolvido sob medida por Urbano Junior em Goiânia."
     }
   ],
   "atelier": [

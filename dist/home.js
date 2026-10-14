@@ -37,8 +37,8 @@
     // Static HTML provides an accessible fallback if the content request fails.
     document.querySelector('#project-dialog-image').src = project?.src || image.getAttribute('src');
     document.querySelector('#project-dialog-image').alt = project?.alt || image.alt;
-    document.querySelector('#project-dialog-title').textContent = project?.title || button.querySelector('h3').textContent;
-    document.querySelector('#project-dialog-category').textContent = project?.categoryLabel || button.querySelector('.project-category').textContent;
+    document.querySelector('#project-dialog-title').textContent = project?.title || button.querySelector('h3')?.textContent || 'Criação sob medida';
+    document.querySelector('#project-dialog-category').textContent = project?.categoryLabel || button.querySelector('.project-category')?.textContent || 'Ateliê';
     document.querySelector('#project-dialog-description').textContent = project?.description || 'Uma referência ilustrativa de forma, tecido e criação.';
     const category = project?.categoryLabel || item.dataset.category;
     document.querySelector('#project-dialog-contact').href = `${homeData?.contact.whatsapp || 'https://wa.me/5562981647663'}?text=${encodeURIComponent(`Olá, Urbano Junior! Gostaria de conversar sobre uma criação: ${category}.`)}`;
@@ -60,7 +60,7 @@
   const wrap = value => ((value % 1) + 1) % 1;
 
   function paint() {
-    if (!desktop.matches) return;
+
     photos.forEach((photo, index) => {
       const position = (wrap(index / photos.length + phase + .5) - .5) * 2;
       const distance = Math.abs(position);
@@ -72,11 +72,11 @@
       photo.style.opacity = String(Math.min(1, (1 - distance) * 6));
     });
   }
-  function shouldMove() { return desktop.matches && visible && !paused && !reduce.matches && !dragging && !hovered && !focused && !document.hidden; }
+  function shouldMove() { return visible && !paused && !reduce.matches && !dragging && !document.hidden; }
   function animate(now) {
     frame = 0;
     if (!shouldMove()) { last = 0; return; }
-    if (last) phase = wrap(phase + Math.min(now - last, 50) / 150000);
+    if (last) phase = wrap(phase + Math.min(now - last, 50) / 90000);
     last = now;
     paint();
     frame = requestAnimationFrame(animate);
@@ -86,19 +86,22 @@
     else if (!shouldMove()) { cancelAnimationFrame(frame); frame = 0; last = 0; }
   }
   function updateToggle() {
-    toggle.hidden = !desktop.matches;
+    if (!toggle) return;
+    toggle.hidden = false;
     toggle.setAttribute('aria-pressed', String(paused));
     toggle.textContent = paused ? 'Retomar movimento' : 'Pausar movimento';
   }
   function setup() {
     width = carousel.clientWidth;
-    carousel.classList.toggle('is-arc', desktop.matches);
+    carousel.classList.add('is-arc');
     photos.forEach(photo => { photo.style.removeProperty('transform'); photo.style.removeProperty('opacity'); photo.style.removeProperty('z-index'); });
     paint(); updateToggle(); schedule();
   }
-  toggle.addEventListener('click', () => { paused = !paused; updateToggle(); schedule(); });
+  if (toggle) {
+    toggle.addEventListener('click', () => { paused = !paused; updateToggle(); schedule(); });
+  }
   carousel.addEventListener('pointerdown', event => {
-    if (!desktop.matches || event.button !== 0) return;
+    if (event.button !== 0 && event.pointerType === 'mouse') return;
     dragging = true; lastX = event.clientX;
     carousel.setPointerCapture(event.pointerId);
     carousel.classList.add('is-dragging');
@@ -121,8 +124,7 @@
   carousel.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
     event.preventDefault();
-    if (desktop.matches) { phase = wrap(phase + (event.key === 'ArrowRight' ? -1 : 1) / photos.length); paint(); }
-    else track.scrollBy({left: (event.key === 'ArrowRight' ? 1 : -1) * width * .72, behavior: reduce.matches ? 'instant' : 'smooth'});
+    phase = wrap(phase + (event.key === 'ArrowRight' ? -1 : 1) / photos.length); paint();
   });
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; schedule(); }, {threshold: .05}).observe(carousel);
   new ResizeObserver(setup).observe(carousel);

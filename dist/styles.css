@@ -59,8 +59,8 @@
 .hero-photo-frame{height:100%;min-width:0;overflow:hidden;position:relative}
 .hero-slide.is-active{pointer-events:auto}
 .hero-photo-frame .hero-photo{display:block;width:100%;height:100%;transition:transform .8s var(--ease-quiet)}
-.site-header{transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease}
-.site-header.is-scrolled{background:rgba(245,242,236,.985);backdrop-filter:blur(8px)}
+.site-header{transition:background .4s ease,border-color .4s ease,box-shadow .4s ease}
+.site-header.is-scrolled{backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%)}
 nav>a:not(.header-contact)::after{transition:width .35s var(--ease-quiet)}
 .about-copy .lead{position:relative}.sketch-line{position:absolute;left:0;top:-10px;width:52px;height:1px;background:var(--walnut);transform-origin:left;pointer-events:none}
 .process-grid{--step-gap:36px}.step-number span{position:relative;transform-origin:left}

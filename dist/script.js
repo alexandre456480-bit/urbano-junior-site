@@ -27,8 +27,27 @@
   });
   const desktop = window.matchMedia('(min-width: 821px)');
   desktop.addEventListener('change', event => { if (event.matches) closeMenu(); });
-  const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+  const sections = [...document.querySelectorAll('section[id]')];
+  const updateHeader = () => {
+    const scrollPos = window.scrollY;
+    header.classList.toggle('is-scrolled', scrollPos > 12);
+    const headerHeight = header.offsetHeight || 90;
+    const probeY = scrollPos + headerHeight * 0.45;
+    let currentId = 'inicio';
+    for (const section of sections) {
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
+      if (probeY >= top && probeY < bottom) {
+        currentId = section.id;
+        break;
+      }
+    }
+    if (header.dataset.activeSection !== currentId) {
+      header.dataset.activeSection = currentId;
+    }
+  };
   window.addEventListener('scroll', updateHeader, {passive: true});
+  window.addEventListener('resize', updateHeader, {passive: true});
   updateHeader();
 
   const carousel = document.querySelector('[data-hero-carousel]');
@@ -41,6 +60,7 @@
     let timer = null;
 
     const updateToggle = () => {
+      if (!toggle) return;
       toggle.setAttribute('aria-pressed', String(paused));
       toggle.setAttribute('aria-label', paused ? 'Retomar carrossel' : 'Pausar carrossel');
       toggle.classList.toggle('is-paused', paused);
@@ -61,12 +81,14 @@
       }, 5000);
     };
 
-    toggle.hidden = false;
-    toggle.addEventListener('click', () => {
-      paused = !paused;
-      updateToggle();
-      start();
-    });
+    if (toggle) {
+      toggle.hidden = false;
+      toggle.addEventListener('click', () => {
+        paused = !paused;
+        updateToggle();
+        start();
+      });
+    }
     document.addEventListener('visibilitychange', start);
     reducedMotion.addEventListener('change', event => {
       paused = event.matches;
