@@ -10,25 +10,171 @@
     "mapEmbed": "https://www.google.com/maps?cid=6007956909621646272&output=embed"
   },
   "services": [
-    {"number":"01","title":"Criação sob medida","label":"SEU ESTILO, SUA PEÇA","category":"sob-medida","src":"assets/editorial-hero.jpg","alt":"Fotografia ilustrativa de composição de moda e estilo pessoal","width":1600,"height":2400,"description":"Peças exclusivas desenvolvidas individualmente, considerando estilo, proporções, ocasião e identidade de cada cliente."},
-    {"number":"02","title":"Festa e ocasiões especiais","label":"PARA MOMENTOS MARCANTES","category":"festa","src":"assets/editorial-evening.jpg","alt":"Fotografia ilustrativa de vestido de festa com silhueta elegante","width":900,"height":1282,"description":"Vestidos e criações exclusivas para momentos que pedem uma peça pensada especialmente para quem irá vesti-la."},
-    {"number":"03","title":"Noivas","label":"UMA CRIAÇÃO PARA O SEU SIM","category":"noivas","src":"assets/editorial-bridal.jpg","alt":"Fotografia ilustrativa de vestido de noiva com renda e véu","width":1000,"height":1500,"description":"Criação de vestidos de noiva sob medida, desenvolvidos desde o conceito até os últimos detalhes da peça."},
-    {"number":"04","title":"Modelagem para marcas","label":"DA IDEIA À CONSTRUÇÃO","category":"modelagem","src":"assets/editorial-pattern.jpg","alt":"Fotografia ilustrativa de mãos traçando um molde com régua de modelagem","width":1000,"height":1500,"description":"Modelagem, moulage e desenvolvimento técnico de peças para marcas, estilistas e projetos de moda."}
+    {
+      "title": "Criação sob medida",
+      "category": "sob-medida",
+      "src": "assets/editorial-hero.jpg",
+      "alt": "Fotografia ilustrativa de composição de moda e estilo pessoal",
+      "width": 1600,
+      "height": 2400,
+      "description": "Desenvolvimento de peças sob medida, com definição de modelo, tecidos, medidas e ajustes."
+    },
+    {
+      "title": "Festa e ocasiões especiais",
+      "category": "festa",
+      "src": "assets/editorial-evening.jpg",
+      "alt": "Fotografia ilustrativa de vestido de festa com silhueta elegante",
+      "width": 900,
+      "height": 1282,
+      "description": "Vestidos e peças sob medida para festas, eventos e outras ocasiões especiais."
+    },
+    {
+      "title": "Noivas",
+      "category": "noivas",
+      "src": "assets/editorial-bridal.jpg",
+      "alt": "Fotografia ilustrativa de vestido de noiva com renda e véu",
+      "width": 1000,
+      "height": 1500,
+      "description": "Criação de vestidos de noiva sob medida, desenvolvidos desde o conceito até os últimos detalhes da peça."
+    },
+    {
+      "title": "Modelagem para marcas",
+      "category": "modelagem",
+      "src": "assets/editorial-pattern.jpg",
+      "alt": "Fotografia ilustrativa de mãos traçando um molde com régua de modelagem",
+      "width": 1000,
+      "height": 1500,
+      "description": "Modelagem, moulage e desenvolvimento técnico de peças para marcas, estilistas e projetos de moda."
+    }
   ],
   "projects": [
-    {"id":"aurora","title":"Vestido Aurora","category":"festa","categoryLabel":"Festa","type":"Silhueta & caimento","src":"assets/editorial-evening.jpg","alt":"Referência ilustrativa de vestido de festa em tom vinho","width":900,"height":1282,"ratio":"portrait","position":"50% 30%","description":"Uma referência de linhas delicadas, tecido e caimento para ocasiões especiais."},
-    {"id":"traco","title":"O primeiro traço","category":"autorais","categoryLabel":"Autorais","type":"Croqui & pesquisa","src":"assets/editorial-sketch.jpg","alt":"Referência ilustrativa de croqui de vestido ao lado de amostras de tecidos","width":1000,"height":1500,"ratio":"square","position":"50% 52%","description":"O desenho e a escolha dos materiais como ponto de partida de uma criação."},
-    {"id":"sim","title":"O instante do sim","category":"noivas","categoryLabel":"Noivas","type":"Renda & detalhes","src":"assets/editorial-bridal.jpg","alt":"Referência ilustrativa de noiva com vestido de renda branco","width":1000,"height":1500,"ratio":"tall","position":"50% 45%","description":"Uma referência de textura, proporções e delicadeza para o vestido de noiva."},
-    {"id":"identidade","title":"Uma identidade própria","category":"sob-medida","categoryLabel":"Sob medida","type":"Forma & expressão","src":"assets/editorial-hero.jpg","alt":"Referência ilustrativa de composição de moda que expressa estilo pessoal","width":1600,"height":2400,"ratio":"tall","position":"50% 45%","description":"A relação entre a personalidade de quem veste e as escolhas de uma peça."},
-    {"id":"forma","title":"A construção da forma","category":"modelagem","categoryLabel":"Modelagem","type":"Molde & proporção","src":"assets/editorial-pattern.jpg","alt":"Referência ilustrativa de construção de molde com lápis e régua","width":1000,"height":1500,"ratio":"portrait","position":"50% 48%","description":"O cuidado técnico que transforma o desenho em volume, movimento e caimento."},
-    {"id":"gesto","title":"O cuidado em cada gesto","category":"autorais","categoryLabel":"Autorais","type":"Processo artesanal","src":"assets/editorial-craft.jpg","alt":"Referência ilustrativa de costura de tecido em máquina de ateliê","width":1000,"height":1500,"ratio":"square","position":"50% 58%","description":"Uma referência do trabalho manual presente na construção e nos acabamentos."}
+    {
+      "id": "aurora",
+      "title": "Vestido de festa",
+      "category": "festa",
+      "categoryLabel": "Festa",
+      "type": "Silhueta & caimento",
+      "src": "assets/editorial-evening.jpg",
+      "alt": "Referência ilustrativa de vestido de festa em tom vinho",
+      "width": 900,
+      "height": 1282,
+      "ratio": "portrait",
+      "position": "50% 30%",
+      "description": "Referência ilustrativa de vestido de festa, com detalhes de silhueta e caimento."
+    },
+    {
+      "id": "traco",
+      "title": "Croqui de criação",
+      "category": "autorais",
+      "categoryLabel": "Autorais",
+      "type": "Croqui & pesquisa",
+      "src": "assets/editorial-sketch.jpg",
+      "alt": "Referência ilustrativa de croqui de vestido ao lado de amostras de tecidos",
+      "width": 1000,
+      "height": 1500,
+      "ratio": "square",
+      "position": "50% 52%",
+      "description": "Referência ilustrativa de croqui e amostras de tecidos para o desenvolvimento de uma peça."
+    },
+    {
+      "id": "sim",
+      "title": "Vestido de noiva",
+      "category": "noivas",
+      "categoryLabel": "Noivas",
+      "type": "Renda & detalhes",
+      "src": "assets/editorial-bridal.jpg",
+      "alt": "Referência ilustrativa de noiva com vestido de renda branco",
+      "width": 1000,
+      "height": 1500,
+      "ratio": "tall",
+      "position": "50% 45%",
+      "description": "Referência ilustrativa de vestido de noiva com renda e véu."
+    },
+    {
+      "id": "identidade",
+      "title": "Peça sob medida",
+      "category": "sob-medida",
+      "categoryLabel": "Sob medida",
+      "type": "Forma & expressão",
+      "src": "assets/editorial-hero.jpg",
+      "alt": "Referência ilustrativa de composição de moda que expressa estilo pessoal",
+      "width": 1600,
+      "height": 2400,
+      "ratio": "tall",
+      "position": "50% 45%",
+      "description": "Referência ilustrativa de modelo e proporções para uma peça sob medida."
+    },
+    {
+      "id": "forma",
+      "title": "Modelagem",
+      "category": "modelagem",
+      "categoryLabel": "Modelagem",
+      "type": "Molde & proporção",
+      "src": "assets/editorial-pattern.jpg",
+      "alt": "Referência ilustrativa de construção de molde com lápis e régua",
+      "width": 1000,
+      "height": 1500,
+      "ratio": "portrait",
+      "position": "50% 48%",
+      "description": "Referência ilustrativa de construção de molde com lápis e régua."
+    },
+    {
+      "id": "gesto",
+      "title": "Costura e acabamentos",
+      "category": "autorais",
+      "categoryLabel": "Autorais",
+      "type": "Processo artesanal",
+      "src": "assets/editorial-craft.jpg",
+      "alt": "Referência ilustrativa de costura de tecido em máquina de ateliê",
+      "width": 1000,
+      "height": 1500,
+      "ratio": "square",
+      "position": "50% 58%",
+      "description": "Referência ilustrativa de costura e acabamento de tecido em máquina de ateliê."
+    }
   ],
   "atelier": [
-    {"src":"assets/editorial-sketch.jpg","alt":"Fotografia ilustrativa de croquis e amostras de tecido em ateliê","title":"O traço","width":1000,"height":1500},
-    {"src":"assets/editorial-pattern.jpg","alt":"Fotografia ilustrativa de mãos trabalhando na modelagem de uma peça","title":"A forma","width":1000,"height":1500},
-    {"src":"assets/editorial-craft.jpg","alt":"Fotografia ilustrativa do processo de costura de uma peça","title":"O gesto","width":1000,"height":1500},
-    {"src":"assets/editorial-evening.jpg","alt":"Fotografia ilustrativa de silhueta de vestido de festa","title":"O caimento","width":900,"height":1282},
-    {"src":"assets/editorial-bridal.jpg","alt":"Fotografia ilustrativa de renda e detalhes em vestido de noiva","title":"O detalhe","width":1000,"height":1500},
-    {"src":"assets/editorial-fashion.jpg","alt":"Fotografia ilustrativa de seleção de roupas em arara","title":"A criação","width":900,"height":1350}
+    {
+      "src": "assets/editorial-sketch.jpg",
+      "alt": "Fotografia ilustrativa de croquis e amostras de tecido em ateliê",
+      "title": "Croqui",
+      "width": 1000,
+      "height": 1500
+    },
+    {
+      "src": "assets/editorial-pattern.jpg",
+      "alt": "Fotografia ilustrativa de mãos trabalhando na modelagem de uma peça",
+      "title": "Modelagem",
+      "width": 1000,
+      "height": 1500
+    },
+    {
+      "src": "assets/editorial-craft.jpg",
+      "alt": "Fotografia ilustrativa do processo de costura de uma peça",
+      "title": "Costura",
+      "width": 1000,
+      "height": 1500
+    },
+    {
+      "src": "assets/editorial-evening.jpg",
+      "alt": "Fotografia ilustrativa de silhueta de vestido de festa",
+      "title": "Vestido de festa",
+      "width": 900,
+      "height": 1282
+    },
+    {
+      "src": "assets/editorial-bridal.jpg",
+      "alt": "Fotografia ilustrativa de renda e detalhes em vestido de noiva",
+      "title": "Renda",
+      "width": 1000,
+      "height": 1500
+    },
+    {
+      "src": "assets/editorial-fashion.jpg",
+      "alt": "Fotografia ilustrativa de seleção de roupas em arara",
+      "title": "Peças de vestuário",
+      "width": 900,
+      "height": 1350
+    }
   ]
 }

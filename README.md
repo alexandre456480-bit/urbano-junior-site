@@ -4,13 +4,13 @@ Site estático em HTML, CSS e JavaScript. A pasta `dist/` contém todos os arqui
 
 ## Identidade preservada
 
-A refatoração mantém o HTML, os estilos, as imagens, os textos, os botões e a navegação da hero original. Cormorant Garamond e Manrope continuam sendo servidas localmente, com as licenças OFL em `dist/assets/`. A paleta permanece marfim, greige, pedra, nogueira e mocha. `styles.css` conserva a composição original; `home.css` controla as seções refatoradas abaixo da hero.
+A hero mantém a frase “Sua identidade, desenhada sob medida.”, com tipografia menor. Os demais títulos e textos usam descrições diretas, sem slogans. Cormorant Garamond e Manrope continuam sendo servidas localmente, com as licenças OFL em `dist/assets/`. A hero usa marfim, os serviços usam areia (`#e8dfd2`) e o portfólio usa pedra clara (`#efefeb`). `styles.css` conserva os estilos de base; `home.css` controla os ajustes da hero e das demais seções.
 
-Os textos auxiliares das novas seções usam 15–16 px, links de apoio 14 px e rótulos 11–12 px. A hero e o cabeçalho conservam seus tamanhos anteriores.
+Os textos auxiliares das seções usam 15–16 px, links de apoio 14 px e rótulos 11–12 px. O título da hero usa 52–88 px conforme a largura da tela. O cabeçalho conserva seus tamanhos anteriores.
 
 ## Estrutura final
 
-1. Hero original.
+1. Hero com título reduzido.
 2. Principais serviços: criação sob medida, festa e ocasiões especiais, noivas e modelagem para marcas, em grid 2×2 no desktop e empilhados no mobile.
 3. Portfólio: seis referências ilustrativas em masonry, seis filtros, visualização em modal e CTA contextual para WhatsApp.
 4. Diferencial: processo artesanal acompanhado diretamente por Urbano Junior, com fotografias em arco e perspectiva.
@@ -59,4 +59,4 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 node research/check-home.cjs
 ```
 
-O QA utiliza o Playwright já instalado em `research/` e o Chrome local. Compara a geometria e a tipografia do cabeçalho e da hero com a versão anterior em 320, 375, 390, 600, 768, 820, 1024, 1440 e 1920 px. Confere transbordamento, imagens, ordem das seções, filtros, serviços, modal e foco, arraste, teclado, movimento e pausa do carrossel, menu móvel, contatos, página de privacidade e leitura sem JavaScript. Nenhuma mensagem é enviada nos testes. Capturas e resultados de QA são arquivos locais ignorados pelo Git.
+O QA utiliza o Playwright já instalado em `research/` e o Chrome local. Compara a geometria e a tipografia do cabeçalho com a versão anterior em 320, 375, 390, 600, 768, 820, 1024, 1440 e 1920 px. Confere transbordamento, imagens, ordem das seções, filtros, serviços, modal e foco, arraste, teclado, movimento e pausa do carrossel, menu móvel, contatos, página de privacidade e leitura sem JavaScript. Nenhuma mensagem é enviada nos testes. Capturas e resultados de QA são arquivos locais ignorados pelo Git.

@@ -17,7 +17,7 @@ const url = 'http://127.0.0.1:4173/';
   const baselinePath = path.join(__dirname,'home-before.html');
   const baselineHTML = fs.existsSync(baselinePath) ? fs.readFileSync(baselinePath,'utf8') : execFileSync('git',['show','94442b6ec0da4f23bf6c217bead4487559bb9069:dist/index.html'],{cwd:root,encoding:'utf8'});
   await page.route('**/baseline', route => route.fulfill({contentType:'text/html',body:baselineHTML}));
-  const geometry = () => page.evaluate(() => [...document.querySelectorAll('.site-header, .header-inner, .brand, #main-navigation, .hero, .hero-copy, #hero-title, .hero-description, .hero-copy .button, .hero-link, .hero-visual, .hero-slide.is-active .hero-photo-frame')].map(element => {
+  const geometry = () => page.evaluate(() => [...document.querySelectorAll('.site-header, .header-inner, .brand, #main-navigation')].map(element => {
     const {x,y,width,height} = element.getBoundingClientRect();
     const css = getComputedStyle(element);
     return {element:element.className || element.id,x,y,width,height,fontSize:css.fontSize,lineHeight:css.lineHeight,color:css.color};
@@ -28,11 +28,11 @@ const url = 'http://127.0.0.1:4173/';
   for (const width of widths) {await page.setViewportSize({width,height:950}); baseline[width] = await geometry()}
   await page.goto(url, {waitUntil:'domcontentloaded'});
   await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].filter(image=>image.getAttribute('src')).map(async image=>{image.loading='eager';await image.decode()}))});
-  const results = {heroPreserved:[],layouts:[],errors};
+  const results = {headerPreserved:[],layouts:[],errors};
   for(const width of widths) {
     await page.setViewportSize({width,height:950});
-    assert.deepEqual(await geometry(), baseline[width],`Header/hero changed at ${width}px`);
-    results.heroPreserved.push(width);
+    assert.deepEqual(await geometry(), baseline[width],`Header changed at ${width}px`);
+    results.headerPreserved.push(width);
     const layout = await page.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,overflow:document.documentElement.scrollWidth>innerWidth}));
     results.layouts.push(layout);
     assert.equal(layout.overflow,false,`Overflow at ${width}px`);
@@ -58,7 +58,7 @@ const url = 'http://127.0.0.1:4173/';
   assert.equal(await page.locator('[data-filter="noivas"]').getAttribute('aria-pressed'),'true');
   await page.locator('[data-project="sim"]').click();
   await page.waitForFunction(()=>document.querySelector('#project-dialog').open);
-  assert.equal(await page.locator('#project-dialog-title').textContent(),'O instante do sim');
+  assert.equal(await page.locator('#project-dialog-title').textContent(),'Vestido de noiva');
   assert.ok(decodeURIComponent(await page.locator('#project-dialog-contact').getAttribute('href')).includes('Noivas'));
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('#project-dialog').evaluate(element=>element.open),false);
