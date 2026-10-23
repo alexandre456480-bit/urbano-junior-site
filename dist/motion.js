@@ -186,13 +186,7 @@
       play(element, 'scale-in', 60, 1100);
     }, 'scale-in');
 
-    /* --- Portfolio items: staggered grid reveal --- */
-    watch('.portfolio-item', (element, index) => {
-      const col = compact.matches ? (index % 2) : (index % 3);
-      const row = compact.matches ? Math.floor(index / 2) : Math.floor(index / 3);
-      const delay = row * 120 + col * 70;
-      play(element, 'scale-in', delay, 950);
-    }, 'scale-in');
+    /* Portfolio card visibility and transitions are managed by home.js pagination. */
 
     /* --- Portfolio filters and CTA --- */
     watch('.portfolio-filters', element => play(element, 'fade-up', 0, 800), 'fade-up');

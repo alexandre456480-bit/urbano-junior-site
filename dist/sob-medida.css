@@ -1,0 +1,12 @@
+/* Reuse the party service layout and gallery; keep adjustments local to this service. */
+.sob-medida-page .bridal-hero-bg{object-position:50% 38%}
+.sob-medida-page .festas-exclusive-images{max-width:500px}
+.sob-medida-page .festas-exclusive-main{border-radius:44% 44% 4px 4px}
+.medida-related{padding-block:38px;background:#e8dfd2;border-block:1px solid var(--line)}
+.medida-related .container{display:flex;align-items:center;justify-content:space-between;gap:28px}
+.medida-related h2{font-size:30px;line-height:1.2;letter-spacing:-.5px;max-width:300px}
+.medida-related .container>div{display:flex;flex-wrap:wrap;gap:12px 28px}
+.medida-related a{display:flex;align-items:center;gap:12px;min-height:44px;font-size:13px;border-bottom:1px solid var(--stone)}
+.medida-related .icon{width:18px;height:18px}
+@media(max-width:1100px){.medida-related .container{align-items:start;flex-direction:column}}
+@media(max-width:600px){.sob-medida-page .bridal-hero-bg{object-position:55% 35%}.medida-related .container>div{flex-direction:column;gap:10px;width:100%}.medida-related a{justify-content:space-between}.medida-related h2{font-size:28px}}

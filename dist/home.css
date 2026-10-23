@@ -224,3 +224,54 @@ body.has-dialog{overflow:hidden}
 }
 @media(max-width:360px){.portfolio-grid{columns:1}.project-photo{max-height:420px}.home-section h2{font-size:38px}.about .about-copy h2{font-size:35px}}
 @media(prefers-reduced-motion:reduce){.process .process-grid li:hover,.project-open:hover .project-photo img,.services .service-image:hover img{transform:none}.arc-photo{will-change:auto}}
+
+/* Expanded portfolio: preserve the masonry, original colors and complete framing. */
+.home-page .portfolio .section-heading{align-items:center}
+.home-page .portfolio-intro>p{margin:0;font-size:15px;color:var(--muted);line-height:1.7}
+.home-page .portfolio-filters{gap:12px 26px;margin-bottom:18px}
+.home-page .portfolio-filter{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.5px;min-height:48px;padding-block:12px}
+.portfolio-filter-count{display:inline-grid;place-items:center;min-width:24px;min-height:24px;padding:1px 5px;border-radius:20px;font-size:10px;letter-spacing:0;background:#e8dfd2;color:var(--muted);font-variant-numeric:tabular-nums}
+.portfolio-filter.is-selected .portfolio-filter-count{background:var(--mocha);color:var(--paper)}
+.home-page .portfolio-status{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:24px;font-variant-numeric:tabular-nums}
+.home-page .portfolio .project-photo{aspect-ratio:auto;max-height:none;background:var(--paper);border:1px solid var(--line)}
+.home-page .portfolio .project-photo img{width:100%;height:auto;object-fit:contain;filter:none}
+.home-page .portfolio .project-open:hover .project-photo img{filter:none;transform:none}
+.home-page .portfolio .project-overlay{padding:18px;background:linear-gradient(transparent 65%,#29251fc4)}
+.home-page .portfolio .project-open:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:10px}
+.portfolio-more{display:flex;justify-content:center;padding-block:12px 28px}
+.portfolio-more .button{min-height:48px}
+.home-page .portfolio-filters[hidden],.portfolio-more[hidden]{display:none}
+.home-page .project-dialog{border-radius:12px;width:min(1080px,calc(100% - 32px));max-height:calc(100dvh - 32px)}
+.home-page .project-dialog-content{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
+.home-page .project-dialog-content>img{width:100%;height:min(76dvh,760px);min-height:0;max-height:none;object-fit:contain;background:#eee8df;padding:14px;touch-action:pan-y pinch-zoom}
+.home-page .project-dialog-copy{padding:56px 30px 30px;min-width:0}
+.home-page .project-dialog-copy h2{font-size:clamp(30px,3vw,43px);line-height:1.12;letter-spacing:-.8px;overflow-wrap:break-word;margin-bottom:20px}
+.home-page .project-dialog-copy .eyebrow{font-size:11px;letter-spacing:1.5px;margin-bottom:18px}
+.home-page .project-dialog-copy>p:not(.eyebrow){font-size:14px;line-height:1.8}
+.project-dialog-navigation{display:flex;align-items:center;gap:12px;margin-top:24px}
+.project-dialog-navigation button{display:grid;place-items:center;width:46px;height:46px;flex-shrink:0;padding:0;border:1px solid var(--stone);border-radius:50%;background:transparent;color:var(--mocha)}
+.project-dialog-navigation button:disabled{opacity:.35;cursor:default}
+.project-dialog-previous .icon{transform:rotate(180deg)}
+#project-dialog-position{font-size:12px;text-align:center;min-width:72px;font-variant-numeric:tabular-nums}
+.home-page .project-dialog-service{display:inline-flex;max-width:100%;margin-top:24px;font-size:13px}
+.home-page .project-dialog-copy .button{display:flex;width:100%;max-width:100%;margin-top:22px;gap:12px;padding-inline:16px;font-size:10px;white-space:normal}
+.home-page .dialog-close{position:sticky;top:12px;right:auto;display:block;margin:12px 12px -56px auto;border-radius:50%;font-size:28px;line-height:1}
+@media(hover:hover){.project-dialog-navigation button:not(:disabled):hover{background:var(--mocha);color:var(--paper)}}
+@media(max-width:820px){.home-page .portfolio-filters{gap:8px 20px}.home-page .project-dialog-content{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}.home-page .project-dialog-copy{padding:56px 22px 26px}}
+@media(max-width:600px){
+  .home-page .portfolio .section-heading{margin-bottom:26px}.home-page .portfolio-intro{margin-top:16px}.home-page .portfolio-intro>p{font-size:14px}
+  .home-page .portfolio-filters{gap:6px 8px;border:0;margin-bottom:16px}
+  .home-page .portfolio-filter{padding:8px 11px;border:1px solid var(--line);border-radius:24px;gap:6px;font-size:11px;letter-spacing:0;min-height:44px}
+  .home-page .portfolio-filter::after{display:none}.home-page .portfolio-filter.is-selected{background:var(--mocha);border-color:var(--mocha);color:var(--paper)}
+  .home-page .portfolio-filter-count{min-width:21px;min-height:21px;font-size:10px}.home-page .portfolio-filter.is-selected .portfolio-filter-count{background:var(--paper);color:var(--mocha)}
+  .home-page .portfolio-status{font-size:11px;margin-bottom:20px}.home-page .portfolio-grid{columns:2;column-gap:12px}.home-page .portfolio-item{margin-bottom:12px}
+  .home-page .portfolio .project-overlay{opacity:1;inset:auto 8px 8px auto;width:32px;height:32px;display:grid;place-items:center;padding:0;border-radius:50%;background:var(--paper);color:var(--mocha);box-shadow:0 2px 12px #29251f20}
+  .home-page .portfolio .project-overlay>span{display:none}.home-page .portfolio .project-overlay>.icon{width:17px;height:17px}
+  .portfolio-more{padding-top:16px}.portfolio-more .button{font-size:11px}
+  .home-page .project-dialog{width:calc(100% - 20px);max-height:calc(100dvh - 20px)}.home-page .project-dialog-content{grid-template-columns:minmax(0,1fr)}
+  .home-page .project-dialog-content>img{height:48dvh;min-height:0;max-height:none;padding:10px 12px}
+  .home-page .project-dialog-copy{padding:22px 20px 26px}.home-page .project-dialog-copy h2{font-size:30px;margin-bottom:12px}.home-page .project-dialog-copy .eyebrow{margin-bottom:12px;font-size:10px}
+  .home-page .project-dialog-copy>p:not(.eyebrow){font-size:13px}.project-dialog-navigation{margin-top:18px}.home-page .project-dialog-service{margin-top:18px}.home-page .project-dialog-copy .button{margin-top:18px}
+}
+@media(prefers-reduced-motion:reduce){.home-page .portfolio .project-photo img,.home-page .portfolio .project-overlay{transition:none}}
+@media(max-width:360px){.home-page .portfolio-grid{columns:1}}

@@ -1,4 +1,16 @@
 {
   "outputDirectory": "dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/noivas",
+      "destination": "/vestidos-de-noiva-sob-medida-em-goiania",
+      "permanent": true
+    },
+    {
+      "source": "/noivas.html",
+      "destination": "/vestidos-de-noiva-sob-medida-em-goiania",
+      "permanent": true
+    }
+  ]
 }

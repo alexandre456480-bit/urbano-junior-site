@@ -6,14 +6,27 @@
 
   function closeMenu() {
     navigation.classList.remove('is-open');
+    header.classList.remove('has-open-menu');
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', 'Abrir menu');
+    const servicesToggle = navigation.querySelector('.services-toggle');
+    const servicesSubmenu = navigation.querySelector('.services-submenu');
+    if (servicesToggle && servicesSubmenu) {
+      servicesToggle.setAttribute('aria-expanded', 'false');
+      servicesToggle.setAttribute('aria-label', 'Expandir serviços');
+      servicesSubmenu.hidden = true;
+    }
   }
   menuButton.addEventListener('click', () => {
     const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    if (!open) {
+      closeMenu();
+      return;
+    }
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     navigation.classList.toggle('is-open', open);
+    header.classList.toggle('has-open-menu', open);
   });
   navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', event => {
@@ -24,6 +37,9 @@
   });
   document.addEventListener('click', event => {
     if (!header.contains(event.target)) closeMenu();
+  });
+  header.addEventListener('focusout', event => {
+    if (event.relatedTarget && !header.contains(event.relatedTarget)) closeMenu();
   });
   const desktop = window.matchMedia('(min-width: 821px)');
   desktop.addEventListener('change', event => { if (event.matches) closeMenu(); });

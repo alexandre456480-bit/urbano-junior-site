@@ -1,0 +1,90 @@
+.bridal-hero{position:relative;isolation:isolate;min-height:430px;display:flex;align-items:center;padding-block:58px;color:var(--paper);background:var(--mocha)}
+.bridal-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
+.bridal-hero.is-parallax{overflow:clip}
+.bridal-hero.is-parallax .bridal-hero-bg{top:-24%;bottom:auto;height:124%;transform:translate3d(0,var(--hero-scroll-offset,0px),0);will-change:transform}
+.bridal-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#29251ff0,#29251fb3 48%,#29251f30);z-index:-1}
+.bridal-hero h1{font-size:clamp(46px,5.2vw,74px);line-height:1.06;letter-spacing:-1.8px;max-width:720px;margin-bottom:22px}
+.bridal-hero p:not(.eyebrow){font-size:16px;line-height:1.85;max-width:610px;color:#f5f2ece8}
+.bridal-hero .button{margin-top:28px;background:var(--ivory);color:var(--mocha);font-size:11px;letter-spacing:1px}
+.bridal-page .breadcrumbs{padding-block:22px;border-bottom:1px solid var(--line)}
+.bridal-page .section-heading{align-items:start}
+.bridal-page .section-heading>p{max-width:420px}
+.bridal-category+.bridal-category{margin-top:64px}
+.bridal-category-heading{margin-bottom:26px}
+.bridal-category-heading h3{font-size:38px;letter-spacing:-.6px}
+
+.bridal-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.bridal-gallery figure{margin:0;min-width:0}
+.bridal-gallery a{display:block;overflow:hidden;background:var(--greige);border-radius:8px}
+.bridal-gallery img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;transition:transform .4s ease}
+
+.bridal-gallery-vestidos figure:first-child{grid-column:span 2;grid-row:span 2}
+.bridal-gallery-vestidos figure:first-child img{aspect-ratio:auto;height:100%;min-height:0}
+.bridal-gallery-vestidos figure:first-child a{height:100%}
+.bridal-portfolio-cta{margin-top:48px;padding-top:28px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:flex-end;gap:24px}
+.bridal-process{background:radial-gradient(ellipse at 100% 0,#fcfaf6a6,transparent 60%),linear-gradient(135deg,#e8dfd2,#ded3c3);border-block:1px solid #cbbfae80}
+.bridal-process .section-heading{align-items:end;padding-bottom:32px;border-bottom:1px solid #b7a99680}
+.bridal-process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;padding:0;margin:0}
+.bridal-process-grid li{min-width:0;padding:32px 26px 34px;border:1px solid #fcfaf6b3;border-radius:52px 10px 10px 10px;background:linear-gradient(155deg,#fcfaf6c9,#fcfaf670);box-shadow:0 8px 28px #4f403408;transition:transform .3s ease,box-shadow .3s ease}
+.bridal-process-grid .step{display:flex;align-items:center;gap:18px;color:var(--accent);font-family:var(--serif);font-size:60px;line-height:1;letter-spacing:-2px;margin-bottom:32px}
+.bridal-process-grid .step::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,var(--stone),transparent)}
+.bridal-process-grid h3{font-size:30px;line-height:1.12;margin-bottom:18px}
+.bridal-process-grid p{font-size:15px;color:var(--muted);line-height:1.85}
+.bridal-process .button{margin-top:42px;border-radius:4px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.bridal-process-grid li:hover{transform:translateY(-5px);box-shadow:0 14px 32px #4f403412}}
+@media(max-width:600px){.bridal-process-grid li{padding:28px 26px;border-radius:42px 10px 10px 10px}.bridal-process-grid .step{font-size:52px;margin-bottom:24px}.bridal-process .section-heading{padding-bottom:26px}}
+.bridal-faq{background:linear-gradient(135deg,var(--ivory),#eee7dd)}
+.bridal-faq .faq-grid{gap:65px;align-items:start}
+.bridal-faq .faq-grid>div:first-child{padding-top:28px;position:relative}
+.bridal-faq .faq-grid>div:first-child::before{content:'';position:absolute;top:0;left:0;width:64px;height:2px;background:var(--stone)}
+.bridal-faq .faq-grid h2{max-width:440px;margin-bottom:26px}
+.bridal-faq .faq-grid>div>p:not(.eyebrow){font-size:15px;line-height:1.85;color:var(--muted)}
+.bridal-faq .faq-list{border:0;display:grid;gap:12px;margin-top:0;min-width:0}
+.bridal-faq details{border:1px solid #d9d1c6b3;border-radius:18px;background:var(--paper);box-shadow:0 3px 16px #4f403404;transition:border-color .3s ease,box-shadow .3s ease,background .3s ease}
+.bridal-faq details[open]{border-color:var(--stone);background:#fffdf9;box-shadow:0 8px 24px #4f40340b}
+.bridal-faq summary{font-size:15px;line-height:1.7;padding:23px 26px;gap:22px;color:var(--mocha);border-radius:17px}
+.bridal-faq summary:focus-visible{outline-offset:3px}
+.bridal-faq summary>span{width:34px;height:34px;flex-shrink:0;border:1px solid var(--line);border-radius:50%;background:var(--ivory);transition:background .3s ease,border-color .3s ease}
+.bridal-faq summary>span::before,.bridal-faq summary>span::after{width:12px;left:10px;top:15px;background:currentColor}
+.bridal-faq details[open] summary>span{background:var(--mocha);border-color:var(--mocha);color:var(--paper)}
+.bridal-faq .faq-answer>p{font-size:15px;line-height:1.85;margin:0 26px;padding:18px 0 26px;border-top:1px solid var(--line)}
+.bridal-faq .text-link{margin-top:8px;font-size:14px;padding:12px 18px;max-width:100%;border:1px solid var(--stone);border-radius:32px;background:#fcfaf680;transition:background .3s ease,border-color .3s ease}
+@media(min-width:821px){.bridal-faq .faq-grid>div:first-child{position:sticky;top:140px}}
+@media(hover:hover){.bridal-faq details:hover{border-color:var(--stone)}.bridal-faq .text-link:hover{background:var(--paper);border-color:var(--mocha)}}
+@media(max-width:600px){.bridal-faq summary{padding:20px 18px;gap:16px}.bridal-faq .faq-answer>p{margin-inline:18px;padding-bottom:22px}.bridal-faq details{border-radius:14px}.bridal-faq summary{border-radius:13px}.bridal-faq .text-link{font-size:13px;gap:12px}}
+.bridal-page .contact .section-heading p{max-width:400px}
+@media(hover:hover){.bridal-gallery a:hover img{transform:scale(1.025)}}
+@media(max-width:1100px){.bridal-process-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:35px}.bridal-faq .faq-grid{gap:35px}}
+@media(max-width:820px){.bridal-hero{min-height:390px}.bridal-gallery{gap:20px}.bridal-category-heading{display:block}.bridal-faq .faq-grid{display:block}.bridal-faq .faq-list{margin-top:30px}.bridal-portfolio-cta{align-items:start;flex-direction:column}}
+@media(max-width:600px){.bridal-hero{min-height:0;padding-block:48px}.bridal-hero::before{background:#29251fc9}.bridal-hero h1{font-size:44px;letter-spacing:-1px}.bridal-hero p:not(.eyebrow){font-size:15px}.bridal-hero .eyebrow{font-size:10px}.bridal-hero .button{font-size:10px;max-width:100%;gap:16px;padding-inline:18px}.bridal-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}.bridal-gallery-vestidos figure:first-child{grid-column:span 2;grid-row:auto}.bridal-gallery-vestidos figure:first-child a{height:auto}.bridal-gallery-vestidos figure:first-child img{height:auto;aspect-ratio:4/5;object-position:50% 35%}.bridal-category-heading h3{font-size:34px}.bridal-category+.bridal-category{margin-top:45px}.bridal-process-grid{grid-template-columns:1fr}.bridal-faq summary{font-size:14px}.bridal-faq .faq-answer>p{font-size:14px}.bridal-page .breadcrumbs{font-size:11px}.bridal-page .home-section h2{font-size:40px}}
+@media(prefers-reduced-motion:reduce){.bridal-gallery a:hover img{transform:none}}
+
+/* Bridal photographs: native swipe, keyboard navigation and discreet controls. */
+.bridal-carousel{--carousel-photo-height:clamp(280px,32vw,440px);min-width:0}
+.bridal-carousel-track{position:relative;display:flex;align-items:center;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--stone) transparent;border-radius:8px;padding-bottom:14px;overscroll-behavior-x:contain}
+.bridal-carousel-slide{margin:0;flex:0 0 auto;width:max-content;min-width:0;scroll-snap-align:start}
+.bridal-carousel-slide a{display:block;width:max-content;border-radius:8px;overflow:hidden;background:transparent}
+.bridal-carousel-slide img{display:block;width:auto;max-width:none;height:var(--carousel-photo-height);aspect-ratio:auto}
+.bridal-carousel-track:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.bridal-carousel-slide a:focus-visible{outline-offset:-4px}
+.bridal-carousel-controls{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+.bridal-carousel-controls[hidden]{display:none}
+.bridal-carousel-controls button{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--stone);border-radius:50%;background:transparent;color:var(--mocha);transition:background .2s,color .2s}
+.bridal-carousel-controls button:not(:disabled):hover{background:var(--mocha);color:var(--paper)}
+.bridal-carousel-controls button:disabled{opacity:.3;cursor:default}
+.bridal-carousel-controls [data-previous] .icon{transform:rotate(180deg)}
+@media(max-width:820px){.bridal-carousel-track{gap:20px}}
+@media(max-width:600px){.bridal-carousel-track{gap:16px;scroll-padding-right:24px}.bridal-carousel-controls{margin-top:14px}}
+
+/* One prominent photograph, with the remaining bridal looks alongside it. */
+.bridal-showcase{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center}
+.bridal-featured-photo{margin:0;min-width:0}
+.bridal-featured-photo a{display:block;overflow:hidden;border-radius:50% 50% 8px 8px;background:var(--paper)}
+.bridal-featured-photo img{display:block;width:100%;height:auto}
+.bridal-showcase .bridal-carousel{--carousel-photo-height:clamp(240px,26vw,340px)}
+@media(max-width:820px){.bridal-showcase{grid-template-columns:1fr;gap:28px}.bridal-featured-photo{width:100%;max-width:560px;justify-self:center}}
+@media(max-width:600px){.bridal-showcase{gap:22px}}
+
+/* Equal heights and natural widths preserve every photograph's proportions. */
+@media(max-width:820px){.bridal-carousel,.bridal-showcase .bridal-carousel{--carousel-photo-height:clamp(260px,52vw,380px)}}
+@media(max-width:600px){.bridal-carousel,.bridal-showcase .bridal-carousel{--carousel-photo-height:clamp(220px,72vw,360px)}}
