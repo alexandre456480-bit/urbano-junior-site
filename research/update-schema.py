@@ -37,7 +37,7 @@ business = {
     '@type': 'LocalBusiness', '@id': business_id,
     'name': 'Urbano Junior Estilista', 'url': base,
     'description': 'Studio de criação sob medida, vestidos de noiva e de festa e modelagem para marcas no Jardim América, em Goiânia. Atendimento com hora marcada.',
-    'logo': {'@type': 'ImageObject', '@id': base + '#logo', 'url': base + 'assets/logo-urbano-junior.png', 'contentUrl': base + 'assets/logo-urbano-junior.png'},
+    'logo': {'@type': 'ImageObject', '@id': base + '#logo', 'url': base + 'assets/urbano-junior-logo-3.webp', 'contentUrl': base + 'assets/urbano-junior-logo-3.webp'},
     'image': base + 'assets/noivas/vestido-de-noiva-sob-medida.webp',
     'telephone': '+55-62-98164-7663',
     'address': {'@type': 'PostalAddress', 'streetAddress': contact['streetAddress'] + ' — Jardim América', 'addressLocality': 'Goiânia', 'addressRegion': 'GO', 'postalCode': contact['postalCode'], 'addressCountry': 'BR'},
@@ -68,7 +68,7 @@ services.append({
     'name': 'Alta costura em Goiânia', 'serviceType': 'Criação autoral de peças sob medida',
     'description': 'Criação autoral de vestidos, conjuntos e peças sob medida com Urbano Junior. Desenho, modelagem, provas e acabamentos definidos para cada projeto.',
     'url': base + couture_slug, 'provider': ref(business_id), 'areaServed': city,
-    'image': base + 'assets/altacostura/peca-exclusiva-alta-costura.webp',
+    'image': base + 'assets/altacostura/roupa-de-alta-costura-perto-de-mim.png',
     'mainEntityOfPage': ref(base + couture_slug + '#pagina'),
     'availableChannel': {'@type': 'ServiceChannel', 'serviceUrl': contact['whatsapp'], 'serviceLocation': ref(business_id), 'availableLanguage': 'pt-BR'},
 })
@@ -187,7 +187,7 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
         gallery = {'@type': 'ImageGallery', '@id': url + '#portfolio', 'url': url + '#portfolio', 'name': gallery_names[route], 'inLanguage': 'pt-BR', 'isPartOf': ref(page_id), 'about': ref(bridal['@id']), 'image': [ref(image['@id']) for image in images]}
         graph.extend([gallery] + images)
         page['hasPart'] = [ref(gallery['@id']), ref(faq['@id'])]
-        featured_name = {slug: '/vestido-de-noiva-sob-medida.webp', couture_slug: '/peca-exclusiva-alta-costura.webp', festa_slug: '/roupas-modeladas-para-festas-e-ocasioes-especiais-urbano-junior.webp', custom_slug: '/roupas-sob-medida.webp'}[route]
+        featured_name = {slug: '/vestido-de-noiva-sob-medida.webp', couture_slug: '/roupa-de-alta-costura-perto-de-mim.png', festa_slug: '/roupas-modeladas-para-festas-e-ocasioes-especiais-urbano-junior.webp', custom_slug: '/roupas-sob-medida.webp'}[route]
         featured = next(image for image in images if image['contentUrl'].endswith(featured_name))
         page['primaryImageOfPage'] = ref(featured['@id'])
     html = re.sub(r'(<link rel="canonical" href=")[^"]*(")', lambda m: m[1] + escape(url, quote=True) + m[2], html)
