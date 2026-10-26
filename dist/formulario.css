@@ -1,0 +1,38 @@
+/* Form-only refinements. */
+.form-page{background:radial-gradient(ellipse at 15% 0%,#fffaf2,transparent 55%),linear-gradient(135deg,#eee5d8,#d6c4ae);color:#352b23}
+.form-sheet{background:linear-gradient(160deg,#fffdf9,#f8f3ec);padding-inline:24px;border-color:#fff9;box-shadow:0 20px 65px #59432c14}
+.form-top{min-height:96px;border-bottom:1px solid #e6ddd1}
+.back-link{color:#6b5948;font-size:12px;gap:12px}
+.back-link>span{font-size:21px}
+.form-logo{width:60px;height:60px}
+.form-intro{padding:34px 0 30px}
+.form-intro h1{font-size:52px;letter-spacing:-1.7px;margin-bottom:12px;color:#4f4034}
+.form-intro p:last-child{font-size:12px;color:#756655;line-height:1.8}
+.request-form fieldset{padding:27px 0 30px;border-top-color:#e6ddd1}
+.request-form .identity-fields{border-top:0;padding-top:0}
+.request-form legend{font-size:29px;color:#4f4034;letter-spacing:-.5px;margin-bottom:23px}
+.field-grid{gap:22px}
+.field{gap:9px}
+.field label,.group-label{font-size:12px;font-weight:500;color:#4f4034}
+.field label small{font-size:10px;color:#887969;margin-left:4px}
+.field input,.field select,.field textarea{background:#fffdfa;border:1px solid #dfd4c5;border-radius:12px;min-height:55px;padding:15px 16px;box-shadow:inset 0 2px 3px #59432c04,0 2px 3px #59432c03;transition:border-color .2s,box-shadow .2s}
+.field input::placeholder,.field textarea::placeholder{color:#948575;font-size:13px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #b7a18a66;outline-offset:2px;border-color:#a68b6e;box-shadow:0 0 0 4px #b7a18a0d}
+.field textarea{min-height:135px;line-height:1.8}
+.service-choices{gap:10px}
+.service-choice span{border-radius:12px;min-height:64px;background:#fffcf7;border:1px solid #e3d8c9;padding:13px 12px 13px 37px;font-size:11px;transition:background .2s,border-color .2s,box-shadow .2s}
+.service-choice input{left:13px;width:14px;height:14px}
+.service-choice input:checked+span{background:linear-gradient(135deg,#f0e5d6,#e8dac7);border-color:#a58a6b;box-shadow:inset 0 1px 0 #fff9,0 3px 8px #59432c09;color:#443324}
+.service-choice input:focus-visible+span{outline-color:#a58a6b}
+.details-hint{font-size:10px;color:#8a7967}
+.consent{font-size:11px;line-height:1.9;gap:10px;color:#776653;margin:0 0 23px}
+.consent input{width:16px;height:16px}
+.form-page .submit-button{border-radius:14px;background:linear-gradient(135deg,#705744,#4f3c2d);border:1px solid #6f5743;box-shadow:0 5px 14px #4f40341a,inset 0 1px 0 #ffffff1f;min-height:60px;padding-inline:21px}
+.submit-note{text-align:center;font-size:10px;line-height:1.9;color:#897865;margin-top:15px}
+.form-sheet>.mini-footer{margin-top:28px;padding-top:18px;border-color:#e6ddd1;font-size:10px;color:#897865}
+.review-panel{border-color:#e6ddd1;padding-top:26px}
+.review-panel h2{font-size:36px;color:#4f4034}
+.review-data{background:#fffdfa;border-color:#e3d8c9;border-radius:14px;padding:22px;font-size:12px;line-height:2}
+.visually-hidden,.request-form legend.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(min-width:600px){.form-sheet{max-width:650px;padding-inline:44px;border-radius:22px}.form-intro{padding-top:38px}.form-intro h1{font-size:60px}.service-choice span{font-size:12px}.field-grid.two-columns{gap:20px}}
+@media(max-width:359px){.form-sheet{padding-inline:20px}.form-intro h1{font-size:46px}.service-choices{grid-template-columns:1fr 1fr}.service-choice span{font-size:10px;padding-left:32px}.service-choice input{left:10px}}

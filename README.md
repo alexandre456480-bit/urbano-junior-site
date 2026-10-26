@@ -2,6 +2,14 @@
 
 Site estático em HTML, CSS e JavaScript. A pasta `dist/` contém todos os arquivos prontos para hospedagem. Não há framework nem instalação de dependências para servir o site.
 
+## Página de links e formulário
+
+- `dist/links.html`: página para campanhas e redes sociais, com mini hero, fotografia de alta-costura, logo e cinco links diretos. A apresentação prioriza celulares e mantém uma coluna central no desktop.
+- `dist/formulario.html`: solicitação de atendimento com nome, serviço, ocasião, data, detalhes e referência. `dist/formulario.js` valida os campos e apresenta a mensagem para revisão; o botão seguinte abre o WhatsApp de Urbano Junior. O visitante confirma o envio no próprio WhatsApp. Não há banco de dados, envio automático ou persistência local dos dados.
+- `dist/links.css` e `dist/formulario.css`: estilos exclusivos das duas páginas, com as fontes locais e a paleta do site. As páginas estão com `noindex, follow`, para uso direto em campanhas sem competir com as páginas de serviços nos resultados de busca.
+
+Com `dist/` servido localmente, acesse `/links.html` e `/formulario.html`. Na Vercel, `cleanUrls` também permite `/links` e `/formulario`. A política de privacidade descreve o funcionamento do formulário. Não foram adicionados pixels de publicidade ou serviços de coleta.
+
 ## Identidade preservada
 
 A hero mantém a frase “Sua identidade, desenhada sob medida.”, com tipografia menor. Os demais títulos e textos usam descrições diretas, sem slogans. Cormorant Garamond e Manrope continuam sendo servidas localmente, com as licenças OFL em `dist/assets/`. A hero usa marfim, os serviços usam areia (`#e8dfd2`) e o portfólio usa pedra clara (`#efefeb`). `styles.css` conserva os estilos de base; `home.css` controla os ajustes da hero e das demais seções.

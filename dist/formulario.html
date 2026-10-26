@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Solicitar atendimento | Urbano Junior</title>
+  <meta name="description" content="Conte sobre sua peça, ocasião e referências para iniciar seu atendimento com Urbano Junior.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="assets/urbano-junior-logo-3.webp" type="image/webp">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="links.css">
+  <link rel="stylesheet" href="formulario.css">
+  <script src="formulario.js" defer></script>
+</head>
+<body class="form-page">
+  <main class="form-sheet">
+    <header class="form-top"><a class="back-link" href="links.html"><span aria-hidden="true">←</span> Voltar aos links</a><a href="links.html" aria-label="Urbano Junior — links"><img class="form-logo" src="assets/urbano-junior-logo-3.webp" alt="Urbano Junior Estilista" width="64" height="64"></a></header>
+    <div class="form-intro"><h1>Sua criação.</h1><p>Preencha e revise antes de enviar pelo WhatsApp.</p></div>
+    <noscript><p class="review-note">Ative o JavaScript para preencher e revisar o formulário ou <a href="https://wa.me/5562981647663">converse diretamente pelo WhatsApp</a>.</p></noscript>
+    <form class="request-form" id="request-form" hidden>
+      <fieldset class="identity-fields"><legend class="visually-hidden">Identificação</legend><div class="field-grid two-columns">
+        <div class="field field-wide"><label for="name">Nome completo *</label><input id="name" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required minlength="2" maxlength="100"></div>
+      </div></fieldset>
+      <fieldset><legend>O que você procura</legend><div class="field-grid">
+        <div class="field"><span class="group-label" id="service-label">Serviço desejado *</span><div class="service-choices" role="group" aria-labelledby="service-label">
+          <label class="service-choice"><input type="radio" name="service" value="Vestido de noiva" required><span>Vestido de noiva</span></label>
+          <label class="service-choice"><input type="radio" name="service" value="Festas e ocasiões especiais"><span>Festas e ocasiões especiais</span></label>
+          <label class="service-choice"><input type="radio" name="service" value="Criação sob medida"><span>Criação sob medida</span></label>
+          <label class="service-choice"><input type="radio" name="service" value="Alta-costura"><span>Alta-costura</span></label>
+          <label class="service-choice"><input type="radio" name="service" value="Modelagem para marcas"><span>Modelagem para marcas</span></label>
+          <label class="service-choice"><input type="radio" name="service" value="Outro / preciso de orientação"><span>Outro / preciso de orientação</span></label>
+        </div></div>
+        <div class="field-grid two-columns">
+          <div class="field"><label for="occasion">Ocasião <small>(opcional)</small></label><input id="occasion" name="occasion" placeholder="Ex.: casamento, formatura" maxlength="120"></div>
+          <div class="field"><label for="date">Data desejada <small>(opcional)</small></label><input id="date" name="date" type="date"></div>
+        </div>
+      </div></fieldset>
+      <fieldset><legend>Os detalhes</legend><div class="field-grid">
+        <div class="field"><label for="details">Como você imagina o projeto? *</label><textarea id="details" name="details" placeholder="Tipo de peça, estilo, cores e detalhes que você tem em mente…" required minlength="10" maxlength="2000" aria-describedby="details-hint"></textarea><p class="field-hint details-hint" id="details-hint">Mínimo de 10 caracteres.</p></div>
+        <div class="field"><label for="reference">Link de referência <small>(opcional)</small></label><input id="reference" name="reference" type="url" inputmode="url" placeholder="Link do Pinterest, Instagram ou pasta" maxlength="500"></div>
+      </div></fieldset>
+      <label class="consent"><input type="checkbox" name="consent" required><span>Li a <a href="privacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> e concordo com o uso dos dados para este atendimento. *</span></label>
+      <button class="submit-button" type="submit"><span>Revisar solicitação</span><span aria-hidden="true">→</span></button>
+      <p class="submit-note">* Campos obrigatórios. Você confirma o envio no WhatsApp.</p>
+    </form>
+    <section class="review-panel" id="review-panel" aria-labelledby="review-title" hidden>
+      <h2 id="review-title" tabindex="-1">Revise sua solicitação</h2>
+      <p class="review-note">Confira os detalhes e confirme o envio no WhatsApp.</p>
+      <pre class="review-data" id="review-data"></pre>
+      <a class="submit-button" id="send-request" rel="noreferrer"><span>Continuar no WhatsApp</span><span aria-hidden="true">↗</span></a>
+      <button class="edit-button" id="edit-request" type="button">Editar informações</button>
+    </section>
+    <footer class="mini-footer"><span>Urbano Junior · Goiânia</span><a href="privacidade.html">Privacidade</a></footer>
+  </main>
+</body>
+</html>
