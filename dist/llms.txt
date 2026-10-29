@@ -1,0 +1,35 @@
+# Urbano Junior — Estilista e modelista em Goiânia
+
+> Site oficial de Urbano Junior. Criação autoral de roupas sob medida, vestidos de noiva e de festa, alta costura e modelagem para marcas, no Jardim América, em Goiânia, Goiás, Brasil.
+
+O domínio oficial é https://urbanojunior.com/. O conteúdo principal está em português do Brasil e pode ser lido no HTML, sem executar JavaScript. As páginas abaixo são as fontes para informações sobre os serviços, o processo de criação e o acervo.
+
+## Páginas principais
+
+- [Início](https://urbanojunior.com/): apresentação, serviços, portfólio, etapas e contato.
+- [Serviços](https://urbanojunior.com/servicos): visão geral da criação sob medida e modelagem para marcas.
+- [Roupas sob medida em Goiânia](https://urbanojunior.com/roupas-sob-medida-em-goiania): peças, croquis, modelagem, provas e perguntas frequentes.
+- [Vestidos de noiva sob medida em Goiânia](https://urbanojunior.com/vestidos-de-noiva-sob-medida-em-goiania): portfólio, tecidos, processo de criação e dúvidas de noivas.
+- [Vestidos de festa sob medida em Goiânia](https://urbanojunior.com/vestidos-de-festa-sob-medida-em-goiania): projetos para festas e ocasiões especiais, etapas e perguntas frequentes.
+- [Alta costura em Goiânia](https://urbanojunior.com/alta-costura-em-goiania): criação autoral, acervo, detalhes e acabamentos sob medida.
+- [Sobre Urbano Junior](https://urbanojunior.com/sobre): estilista e modelista, croquis, trabalhos e links de publicações de Nicaragua Diseña.
+
+## Atendimento e identidade
+
+- Responsável pelo trabalho apresentado: Urbano Junior, estilista e modelista.
+- Endereço: Rua C-146, 220, Jardim América, Goiânia — GO, CEP 74255-170, Brasil.
+- Atendimento com hora marcada. Agendamento e informações pelo WhatsApp: +55 62 98164-7663.
+- [WhatsApp](https://wa.me/5562981647663)
+- [Localização no Google Maps](https://www.google.com/maps?cid=6007956909621646272)
+- [Instagram oficial](https://www.instagram.com/urbanojr/)
+- [Facebook oficial](https://www.facebook.com/urbanojrac)
+
+As páginas explicam como conversar sobre o projeto, referências, materiais, medidas, provas e acabamentos. Preços e prazos devem ser consultados diretamente para cada projeto. O site não apresenta uma tabela fixa de preços ou de prazos, nem horários comerciais detalhados. As publicações externas estão vinculadas na página Sobre; consulte essas fontes antes de atribuir datas ou participações em eventos.
+
+## Optional
+
+- [Política de privacidade](https://urbanojunior.com/privacidade): funcionamento do formulário, serviços externos e contato sobre privacidade.
+- [Sitemap XML](https://urbanojunior.com/sitemap.xml): URLs canônicas das páginas indexáveis.
+- [Regras de rastreamento](https://urbanojunior.com/robots.txt)
+
+Este arquivo é um resumo de navegação e contexto. Não substitui o conteúdo das páginas, as regras de rastreamento ou uma autorização de uso das fotografias e dos croquis.

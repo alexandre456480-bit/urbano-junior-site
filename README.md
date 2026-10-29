@@ -83,7 +83,7 @@ A página de noivas está em `/vestidos-de-noiva-sob-medida-em-goiania`, com o a
 
 `research/update-schema.py` regenera os schemas e metadados sem alterar o conteúdo visual. Os grafos conectam o negócio local, estilista, site e páginas; a inicial e serviços incluem catálogo e entidades de serviço. A página de noivas inclui serviço, breadcrumbs, galeria e imagens com dimensões, além do FAQ extraído das respostas visíveis. Não são criados horários, coordenadas, avaliações ou preços sem dados confirmados.
 
-O domínio existente continua sendo usado. Ao definir o domínio definitivo, execute `python research/update-schema.py --base-url https://seu-dominio.com.br/`. Após usar o gerador antigo de conteúdo da home, execute novamente `python research/update-schema.py` para sincronizar os dados estruturados com o HTML atual. Os redirecionamentos dependem de uma hospedagem compatível com a configuração da Vercel.
+O domínio oficial é `https://urbanojunior.com/`. Execute `python research/update-schema.py` para gerar metadados, sitemap e robots com esse domínio. O parâmetro `--base-url` permite uma substituição explícita quando necessária. Após usar o gerador antigo de conteúdo da home, execute novamente esse script para sincronizar os dados estruturados com o HTML atual. Os redirecionamentos dependem de uma hospedagem compatível com a configuração da Vercel.
 
 
 ## Página Sobre
@@ -151,3 +151,12 @@ Fontes analisadas em 23/10/2026:
 - https://www.nicaraguadisena.com/nicaragua-disena-celebrara-su-11ma-edicion-proyectando-lo-mejor-del-diseno-arte-y-moda/
 
 A página da coleção foi lida diretamente via HTTP após falha de cache na ferramenta de pesquisa; o servidor retornou 200. As duas notícias foram consultadas no site oficial. A verificação local abrangeu a estrutura HTML e o JSON-LD; a aparência no navegador não foi revisada.
+
+
+## Domínio oficial, IA e auditoria de SEO
+
+O domínio canônico é `https://urbanojunior.com/`, sem www. O arquivo `dist/llms.txt` resume o conteúdo real e os contatos para sistemas de IA que consultem esse formato; ele não garante indexação, citações ou posicionamento. Atualize-o quando os serviços, contatos ou URLs mudarem.
+
+Após qualquer gerador de conteúdo, execute `python research/update-schema.py`. Links e Formulário permanecem com `noindex, follow` e não entram no sitemap.
+
+A auditoria e as prioridades estão em [research/SEO-GEO-EEAT-AEO-2026-10-29.md](research/SEO-GEO-EEAT-AEO-2026-10-29.md). Na consulta pública de 29/10/2026, o domínio sem www ainda redirecionava para www e o conteúdo publicado declarava o host antigo. Ajuste o domínio principal no provedor junto com a publicação, evitando regras de redirecionamento em direções opostas. Redirecionar o endereço antigo exige configuração no provedor que controla esse endereço.

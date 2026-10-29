@@ -17,9 +17,8 @@ slug = 'vestidos-de-noiva-sob-medida-em-goiania'
 couture_slug = 'alta-costura-em-goiania'
 festa_slug = 'vestidos-de-festa-sob-medida-em-goiania'
 custom_slug = 'roupas-sob-medida-em-goiania'
-home = (dist / 'index.html').read_text(encoding='utf-8')
 parser = argparse.ArgumentParser()
-parser.add_argument('--base-url', default=re.search(r'<link rel="canonical" href="([^"]+)"', home).group(1))
+parser.add_argument('--base-url', default='https://urbanojunior.com/')
 args = parser.parse_args()
 base = args.base_url.rstrip('/') + '/'
 data = json.loads((dist / 'content/home.json').read_text(encoding='utf-8'))
@@ -78,6 +77,8 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
     path = dist / filename
     html = path.read_text(encoding='utf-8')
     url = base + route
+    # Keep absolute social images on the selected production origin too.
+    html = re.sub(r'(<meta (?:property|name)="(?:og:image|twitter:image)" content=")https?://[^/]+/', lambda m: m[1] + base, html)
     title = text(re.search(r'<title>(.*?)</title>', html, re.S).group(1))
     description = unescape(re.search(r'<meta name="description" content="([^"]*)"', html).group(1))
     page_id = url + '#pagina'
@@ -192,6 +193,8 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
         page['primaryImageOfPage'] = ref(featured['@id'])
     html = re.sub(r'(<link rel="canonical" href=")[^"]*(")', lambda m: m[1] + escape(url, quote=True) + m[2], html)
     html = re.sub(r'(<meta property="og:url" content=")[^"]*(")', lambda m: m[1] + escape(url, quote=True) + m[2], html)
+    if 'rel="alternate" type="text/plain"' not in html:
+        html = html.replace('</head>', '<link rel="alternate" type="text/plain" href="/llms.txt" title="Resumo do site para assistentes de IA">\n</head>')
     if route == slug:
         image_url = base + 'assets/noivas/vestido-de-noiva-sob-medida.webp'
         html = re.sub(r'(<meta property="og:image" content=")[^"]*(")', lambda m: m[1] + image_url + m[2], html)
@@ -202,6 +205,17 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
         html = html.replace('</head>', schema + '\n</head>')
     path.write_text(html, encoding='utf-8')
 
-routes = ['', 'servicos', slug, couture_slug, festa_slug, custom_slug, 'sobre', 'privacidade']
+routes = ['', 'servicos', slug, couture_slug, festa_slug, custom_slug, 'sobre', 'privacidade', 'formulario', 'links']
 (dist / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>' + escape(base + route) + '</loc></url>\n' for route in routes) + '</urlset>\n', encoding='utf-8')
 (dist / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: ' + base + 'sitemap.xml\n', encoding='utf-8')
+
+# Maintain canonical URLs for the campaign and contact pages.
+for route in ('links', 'formulario'):
+    path = dist / (route + '.html')
+    html = path.read_text(encoding='utf-8')
+    canonical = '<link rel="canonical" href="' + escape(base + route, quote=True) + '">'
+    if 'rel="canonical"' in html:
+        html = re.sub(r'<link rel="canonical"[^>]*>', canonical, html)
+    else:
+        html = html.replace('</head>', '  ' + canonical + '\n</head>')
+    path.write_text(html, encoding='utf-8')

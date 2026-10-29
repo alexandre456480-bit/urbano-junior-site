@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://urbano-junior-atelie.sacred-giant-7925.chatgpt.site/sitemap.xml
+Sitemap: https://urbanojunior.com/sitemap.xml
