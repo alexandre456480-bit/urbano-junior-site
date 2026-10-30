@@ -1,5 +1,13 @@
 # Urbano Junior — página inicial
 
+## Blog
+
+`dist/blog.html` é o índice editorial em `/blog`, com a paleta, fontes, cabeçalho e rodapé do site. A estrutura usa cards com imagem, tema, título, resumo, data e link “Leia mais”; os temas são filtráveis e o grid adapta três, duas ou uma coluna conforme a largura. Os artigos permanecem legíveis sem JavaScript. A página inicial do blog não cria artigos, datas ou links fictícios: a lista começa vazia e apresenta uma mensagem até a inclusão de publicações reais.
+
+Para incluir um artigo, crie primeiro seu arquivo HTML em `dist/` e registre-o em `dist/content/blog.json`, dentro de `articles`, com os campos `title`, `excerpt`, `category` (identificador), `categoryLabel` (nome visível), `href` (caminho do HTML relativo a dist), `image` (imagem local), `imageAlt`, `width`, `height` e `date` (data real em `AAAA-MM-DD`). Cada entrada representa um artigo publicado; os cards são ordenados do mais recente ao mais antigo e os filtros são derivados dos temas cadastrados.
+
+Execute `python research/render-blog.py` e depois `python research/update-schema.py` para atualizar a listagem e os dados estruturados. A listagem usa schema `Blog`, breadcrumbs e, quando houver publicações, `ItemList`. O índice está no sitemap, nos menus e em `llms.txt`. Cada artigo futuro deverá receber seus próprios metadados, schema e entrada no sitemap ao ser criado. Não foram executados testes nesta implementação, conforme a orientação do projeto nesta sessão.
+
 Site estático em HTML, CSS e JavaScript. A pasta `dist/` contém todos os arquivos prontos para hospedagem. Não há framework nem instalação de dependências para servir o site.
 
 ## Página de links e formulário
@@ -154,6 +162,14 @@ A página da coleção foi lida diretamente via HTTP após falha de cache na fer
 
 
 ## Domínio oficial, IA e auditoria de SEO
+
+### Títulos de busca e novas fotografias — 30/10/2026
+
+`research/search-metadata.json` concentra títulos e descrições das dez páginas. O gerador `research/update-schema.py` aplica esses textos ao HTML, Open Graph, Twitter e aos nomes/descrições de página nos dados estruturados. Os textos destacam serviços, localização, processo e acervo reais; não usam avaliações, preços ou promessas de posicionamento. Links e Formulário mantêm a diretiva de indexação anterior.
+
+As dez fotografias de `img/novas-imagens/` foram copiadas sem alteração para `dist/assets/novas-imagens/`. Todas entram no portfólio da home por `dist/content/home.json`; as páginas de Noivas, Festas, Sob Medida e Alta Costura recebem as imagens relacionadas ao seu conteúdo. Os textos alternativos descrevem o que aparece nas fotos, sem atribuir materiais, eventos ou técnicas não confirmadas. Filtros, ampliação e carregamento progressivo existentes foram preservados.
+
+`research/incorporate-new-images.py` registra essa incorporação e evita repetir uma mesma entrada se for executado novamente. Para outras fotografias futuras, a fonte do portfólio continua sendo o JSON da home. Depois de editar os dados, execute `python research/portfolio_home.py` e `python research/update-schema.py` para renderizar os conteúdos derivados. Não foram executados testes nesta atualização, conforme solicitado.
 
 O domínio canônico é `https://urbanojunior.com/`, sem www. O arquivo `dist/llms.txt` resume o conteúdo real e os contatos para sistemas de IA que consultem esse formato; ele não garante indexação, citações ou posicionamento. Atualize-o quando os serviços, contatos ou URLs mudarem.
 

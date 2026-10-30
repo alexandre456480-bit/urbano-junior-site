@@ -21,6 +21,27 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--base-url', default='https://urbanojunior.com/')
 args = parser.parse_args()
 base = args.base_url.rstrip('/') + '/'
+# Keep search and social wording together, including on campaign/contact pages.
+metadata = json.loads((root / 'research/search-metadata.json').read_text(encoding='utf-8'))
+for route, fields in metadata.items():
+    path = dist / (route + '.html')
+    html = path.read_text(encoding='utf-8')
+    html = re.sub(r'<title>.*?</title>', lambda _: '<title>' + escape(fields['title']) + '</title>', html, count=1, flags=re.S)
+    for attribute, key, value in [
+        ('name', 'description', fields['description']),
+        ('property', 'og:title', fields['title']),
+        ('property', 'og:description', fields['description']),
+        ('name', 'twitter:title', fields['title']),
+        ('name', 'twitter:description', fields['description']),
+    ]:
+        tag = '<meta ' + attribute + '="' + key + '" content="' + escape(value, quote=True) + '">'
+        pattern = r'<meta ' + attribute + '="' + re.escape(key) + '"[^>]*>'
+        if re.search(pattern, html):
+            html = re.sub(pattern, lambda _: tag, html, count=1)
+        else:
+            html = html.replace('</head>', tag + '\n</head>')
+    path.write_text(html, encoding='utf-8')
+
 data = json.loads((dist / 'content/home.json').read_text(encoding='utf-8'))
 contact = data['contact']
 
@@ -73,7 +94,7 @@ services.append({
 })
 catalog = {'@type': 'OfferCatalog', '@id': base + '#catalogo-servicos', 'name': 'Serviços de Urbano Junior', 'url': base + 'servicos', 'numberOfItems': len(services), 'itemListElement': [{'@type': 'Offer', 'itemOffered': ref(service['@id']), 'seller': ref(business_id)} for service in services]}
 
-for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', 'servicos', 'CollectionPage'), (slug + '.html', slug, 'WebPage'), (couture_slug + '.html', couture_slug, 'WebPage'), (festa_slug + '.html', festa_slug, 'WebPage'), (custom_slug + '.html', custom_slug, 'WebPage'), ('sobre.html', 'sobre', ['AboutPage', 'ProfilePage']), ('privacidade.html', 'privacidade', 'WebPage')]:
+for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', 'servicos', 'CollectionPage'), ('blog.html', 'blog', 'Blog'), (slug + '.html', slug, 'WebPage'), (couture_slug + '.html', couture_slug, 'WebPage'), (festa_slug + '.html', festa_slug, 'WebPage'), (custom_slug + '.html', custom_slug, 'WebPage'), ('sobre.html', 'sobre', ['AboutPage', 'ProfilePage']), ('privacidade.html', 'privacidade', 'WebPage')]:
     path = dist / filename
     html = path.read_text(encoding='utf-8')
     url = base + route
@@ -88,7 +109,7 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
         crumbs = [('Início', base)]
         if route in (slug, couture_slug, festa_slug, custom_slug):
             crumbs.append(('Serviços', base + 'servicos'))
-        crumbs.append(({'servicos': 'Serviços', slug: 'Noivas', couture_slug: 'Alta Costura', festa_slug: 'Festas e ocasiões especiais', custom_slug: 'Criação sob medida', 'sobre': 'Sobre Urbano Junior', 'privacidade': 'Política de Privacidade'}[route], url))
+        crumbs.append(({'servicos': 'Serviços', 'blog': 'Blog', slug: 'Noivas', couture_slug: 'Alta Costura', festa_slug: 'Festas e ocasiões especiais', custom_slug: 'Criação sob medida', 'sobre': 'Sobre Urbano Junior', 'privacidade': 'Política de Privacidade'}[route], url))
         breadcrumb = {'@type': 'BreadcrumbList', '@id': url + '#breadcrumb', 'itemListElement': [{'@type': 'ListItem', 'position': i, 'name': name, 'item': link} for i, (name, link) in enumerate(crumbs, 1)]}
         page['breadcrumb'] = ref(breadcrumb['@id'])
         graph.append(breadcrumb)
@@ -109,6 +130,12 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
             gallery = {'@type': 'ImageGallery', '@id': gallery_id, 'url': gallery_id, 'name': 'Portfólio de Urbano Junior', 'inLanguage': 'pt-BR', 'isPartOf': ref(page_id), 'about': ref(person_id), 'image': [ref(image['@id']) for image in portfolio_images]}
             page['hasPart'] = [ref(gallery_id)]
             graph.extend([gallery] + portfolio_images)
+    elif route == 'blog':
+        articles = json.loads((dist / 'content/blog.json').read_text(encoding='utf-8'))['articles']
+        if articles:
+            listing = {'@type': 'ItemList', '@id': url + '#artigos', 'name': 'Artigos do blog', 'numberOfItems': len(articles), 'itemListElement': [{'@type': 'ListItem', 'position': i, 'name': article['title'], 'url': urljoin(base, article['href'].removesuffix('.html'))} for i, article in enumerate(sorted(articles, key=lambda article: article['date'], reverse=True), 1)]}
+            page['mainEntity'] = ref(listing['@id'])
+            graph.append(listing)
     elif route == 'sobre':
         page['mainEntity'] = ref(person_id)
         page['about'] = ref(person_id)
@@ -205,7 +232,7 @@ for filename, route, kind in [('index.html', '', 'WebPage'), ('servicos.html', '
         html = html.replace('</head>', schema + '\n</head>')
     path.write_text(html, encoding='utf-8')
 
-routes = ['', 'servicos', slug, couture_slug, festa_slug, custom_slug, 'sobre', 'privacidade', 'formulario', 'links']
+routes = ['', 'servicos', slug, couture_slug, festa_slug, custom_slug, 'sobre', 'blog', 'privacidade', 'formulario', 'links']
 (dist / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>' + escape(base + route) + '</loc></url>\n' for route in routes) + '</urlset>\n', encoding='utf-8')
 (dist / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: ' + base + 'sitemap.xml\n', encoding='utf-8')
 

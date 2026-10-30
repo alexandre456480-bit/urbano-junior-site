@@ -6,6 +6,8 @@ O domínio oficial é https://urbanojunior.com/. O conteúdo principal está em 
 
 ## Páginas principais
 
+- [Blog](https://urbanojunior.com/blog): índice para navegação pelos artigos de moda e criação sob medida, conforme forem publicados.
+
 - [Início](https://urbanojunior.com/): apresentação, serviços, portfólio, etapas e contato.
 - [Serviços](https://urbanojunior.com/servicos): visão geral da criação sob medida e modelagem para marcas.
 - [Roupas sob medida em Goiânia](https://urbanojunior.com/roupas-sob-medida-em-goiania): peças, croquis, modelagem, provas e perguntas frequentes.
