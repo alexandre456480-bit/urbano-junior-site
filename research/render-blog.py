@@ -42,7 +42,7 @@ icons = re.search(r'<svg\b[^>]*class="icon-library".*?</svg>', source, re.S)[0]
 header = re.search(r'<header\b.*?</header>', source, re.S)[0]
 header = header.replace(' aria-current="page"', '').replace('href="#contato"', 'href="index.html#contato"')
 if 'href="blog.html"' not in header:
-    header = header.replace('<a href="sobre.html">', '<a href="blog.html" aria-current="page">Blog</a><a href="sobre.html">')
+    header = header.replace('<a href="sobre.html">Sobre</a>', '<a href="sobre.html">Sobre</a><a href="blog.html" aria-current="page">Blog</a>')
 else:
     header = header.replace('href="blog.html"', 'href="blog.html" aria-current="page"')
 footer = re.search(r'<footer\b.*?</footer>', source, re.S)[0].replace('href="#contato"', 'href="index.html#contato"')
