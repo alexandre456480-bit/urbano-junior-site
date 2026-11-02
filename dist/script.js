@@ -111,10 +111,28 @@
       updateToggle();
       start();
     });
-    // Warm the remaining photographs without changing their layout or duplicating requests.
-    slides.slice(1).forEach(slide => slide.querySelectorAll('img').forEach(image => {
+    const warmSlide = slide => slide.querySelectorAll('img').forEach(image => {
       image.loading = 'eager';
-    }));
+    });
+    if (window.matchMedia('(max-width: 820px)').matches) {
+      // Let the first photographs and fonts finish before warming future slides.
+      // Keep native lazy loading as a fallback, and the existing 5s slide timing.
+      slides.slice(1).forEach(slide => slide.querySelectorAll('img').forEach(image => {
+        image.fetchPriority = 'low';
+      }));
+      const warmMobileSlides = () => {
+        const warmNext = () => slides.slice(1).forEach(warmSlide);
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(warmNext, {timeout: 1000});
+        } else {
+          window.setTimeout(warmNext, 0);
+        }
+      };
+      if (document.readyState === 'complete') warmMobileSlides();
+      else window.addEventListener('load', warmMobileSlides, {once: true});
+    } else {
+      slides.slice(1).forEach(warmSlide);
+    }
     updateToggle();
     start();
   }

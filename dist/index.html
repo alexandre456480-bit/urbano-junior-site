@@ -17,6 +17,10 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/urbano-junior-logo-3.webp" type="image/webp">
   <link rel="preload" href="assets/local-font-3.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Mobile first-screen resources; desktop keeps its existing loading path. -->
+  <link rel="preload" href="assets/local-font-1.woff2" as="font" type="font/woff2" crossorigin media="(max-width: 820px)">
+  <link rel="preload" href="assets/local-font-5.woff2" as="font" type="font/woff2" crossorigin media="(max-width: 820px)">
+  <link rel="preload" href="assets/festas/vestido-de-festa-personalizado-goiania.webp" as="image" fetchpriority="high" media="(max-width: 820px)">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="home.css">
@@ -1557,7 +1561,7 @@
   <header class="site-header" data-active-section="inicio">
     <div class="header-inner container">
       <a class="brand" href="#inicio" aria-label="Urbano Junior — início">
-        <img src="assets/urbano-junior-logo-3.webp" alt="Logo de Urbano Junior Estilista" width="84" height="84">
+        <img src="assets/urbano-junior-logo-3.webp" alt="Logo de Urbano Junior Estilista" srcset="assets/mobile/logo-252.webp 252w, assets/urbano-junior-logo-3.webp 1254w" sizes="(max-width: 820px) 84px, 1254px" width="84" height="84">
         <span class="brand-type">URBANO JUNIOR<small>ESTILISTA EM GOIÂNIA</small></span>
       </a>
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span></button>
@@ -1589,10 +1593,10 @@
           </div>
           <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 de 5" aria-hidden="true">
             <div class="hero-photo-frame"><img class="hero-photo" src="assets/noivas/vestido-de-noiva-sob-medida.webp" alt="Vestido de noiva com laço lateral, cauda e véu" width="828" height="1193" loading="lazy" decoding="async"></div>
-            <div class="hero-photo-frame"><img class="hero-photo" src="assets/altacostura/roupa-de-alta-costura-perto-de-mim.png" alt="Vestido de alta costura com corpete estruturado e saia preta na passarela" width="712" height="890" loading="lazy" decoding="async"></div>
+            <picture class="hero-photo-frame"><source media="(max-width: 820px)" srcset="assets/mobile/alta-costura-lossless.webp"><img class="hero-photo" src="assets/altacostura/roupa-de-alta-costura-perto-de-mim.png" alt="Vestido de alta costura com corpete estruturado e saia preta na passarela" width="712" height="890" loading="lazy" decoding="async"></picture>
           </div>
           <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 de 5" aria-hidden="true">
-            <div class="hero-photo-frame"><img class="hero-photo" src="assets/altacostura/roupa-de-alta-costura-perto-de-mim.png" alt="Vestido de alta costura com corpete estruturado e saia preta na passarela" width="712" height="890" loading="lazy" decoding="async"></div>
+            <picture class="hero-photo-frame"><source media="(max-width: 820px)" srcset="assets/mobile/alta-costura-lossless.webp"><img class="hero-photo" src="assets/altacostura/roupa-de-alta-costura-perto-de-mim.png" alt="Vestido de alta costura com corpete estruturado e saia preta na passarela" width="712" height="890" loading="lazy" decoding="async"></picture>
             <div class="hero-photo-frame"><img class="hero-photo" src="assets/altacostura/alta-costura-urbano-junior.webp" alt="Criações azuis com recortes, aplicações e diferentes volumes" width="847" height="617" loading="lazy" decoding="async"></div>
           </div>
           <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="5 de 5" aria-hidden="true">
